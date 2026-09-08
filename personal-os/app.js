@@ -18,7 +18,7 @@
 
   const defaultState = {
     version: CURRENT_SCHEMA_VERSION,
-    settings: { maxActiveStudies: 2, maxActiveProjects: 1, maxActiveHobbies: 1 },
+    settings: { maxActiveStudies: 2, maxActiveProjects: 1, maxActiveHobbies: 1, theme: "light" },
     routine: [
       { id: "routine-walk", time: "07:00", end: "08:00", title: "Caminhada", note: "Começar o dia em movimento", movable: true },
       { id: "routine-start", time: "08:00", end: "09:00", title: "Banho, café e preparação", note: "", movable: false },
@@ -100,6 +100,20 @@
   let state = loadState();
   let activeView = "dashboard";
   let agendaOffset = 0;
+  applyTheme(state.settings.theme);
+
+  function applyTheme(theme = "light") {
+    const nextTheme = theme === "dark" ? "dark" : "light";
+    document.documentElement.dataset.theme = nextTheme;
+    document.querySelector('meta[name="theme-color"]')?.setAttribute("content", nextTheme === "dark" ? "#101614" : "#f4f6f5");
+    const toggle = $("#theme-toggle");
+    if (toggle) {
+      const dark = nextTheme === "dark";
+      toggle.textContent = dark ? "☀" : "☾";
+      toggle.setAttribute("aria-label", dark ? "Ativar tema claro" : "Ativar tema escuro");
+      toggle.title = dark ? "Ativar tema claro" : "Ativar tema escuro";
+    }
+  }
 
   function loadState() {
     const loaded = readStorage(STORAGE_KEY, defaultState, mergeState);
@@ -145,7 +159,7 @@
   const glyphIconNames = { "◷": "clock", "→": "arrow", "✦": "focus", "⌁": "metrics", "▦": "agenda", "☷": "backlog", "◒": "study", "↗": "project", "✧": "hobby", "◎": "focus", "✓": "check", "▤": "output", "⊙": "settings" };
   function hydrateIcons(root = document) { $$(".nav-icon, .section-icon", root).forEach((element) => { const name = element.dataset.icon || glyphIconNames[element.textContent.trim()]; if (name && !element.querySelector("svg")) { element.dataset.icon = name; element.innerHTML = icon(name); } }); }
   function renderNav() { $$(".nav-item, .brand").forEach((button) => button.classList.toggle("active", button.dataset.view === activeView)); $("#page-title").textContent = ({ dashboard: "Dashboard", today: "Today", agenda: "Agenda", studies: "Estudos", projects: "Projects", hobbies: "Hobbies", metrics: "Métricas", review: "Weekly Review", settings: "Configurações" })[activeView]; }
-  function renderAll() { renderNav(); refreshSidebar(); renderDashboard(); renderToday(); renderAgenda(); ensureAgendaActionButton(); renderStudies(); renderProjects(); renderHobbies(); renderMetrics(); renderOutputTiles(); renderReview(); renderSettings(); renderCycleHistory(); hydrateIcons(); }
+  function renderAll() { renderNav(); refreshSidebar(); renderDashboard(); renderToday(); renderAgenda(); ensureAgendaActionButton(); renderStudies(); renderProjects(); renderHobbies(); renderMetrics(); renderOutputTiles(); renderReview(); renderSettings(); renderThemeSettings(); renderCycleHistory(); hydrateIcons(); }
   function renderCycleHistory() { const container = $("#view-settings"); if (!container) return; const history = state.cycleHistory || []; const items = history.length ? history.map((cycle) => `<div class="history-item"><div><strong>${esc(cycle.name)}</strong><span>${formatDate(cycle.start)} — ${formatDate(cycle.end || cycle.completedAt)} · ${esc(cycle.objective || "Sem objetivo registrado")}</span></div><span class="status-badge status-done">concluído</span></div>`).join("") : `<div class="empty-state"><strong>Nenhum ciclo concluído ainda</strong><p>Quando um ciclo terminar, registre o que mudou e avance para o próximo.</p></div>`; container.insertAdjacentHTML("beforeend", `<article class="card settings-card wide-card cycle-history-card"><div class="card-header" style="padding-left:0;padding-right:0"><h2 class="card-title"><span class="section-icon" data-icon="cycle"></span> Histórico de ciclos</h2><button class="btn" data-action="advance-cycle">Concluir atual e avançar</button></div>${items}</article>`); }
 
   function renderDashboard() {
@@ -262,6 +276,13 @@
     $("#view-settings").innerHTML = `<div class="page-heading"><div><p class="kicker">Seu sistema, suas regras</p><h1>Configurações <em>do OS</em></h1><p>Pequenos ajustes para que o sistema acompanhe sua vida em vez de ditar o ritmo.</p></div></div><div class="settings-grid"><article class="card settings-card"><div class="card-header" style="padding-left:0;padding-right:0"><h2 class="card-title"><span class="section-icon">⊙</span> Limites de foco</h2></div><div class="setting-row"><div><strong>Estudos ativos</strong><span>Ideal: 1–2 assuntos principais</span></div><input class="number-input" type="number" min="1" max="5" data-setting="maxActiveStudies" value="${state.settings.maxActiveStudies}"></div><div class="setting-row"><div><strong>Projects ativos</strong><span>Ideal: um projeto por vez</span></div><input class="number-input" type="number" min="1" max="3" data-setting="maxActiveProjects" value="${state.settings.maxActiveProjects}"></div><div class="setting-row"><div><strong>Hobbies ativos por ciclo</strong><span>Um principal mantém espaço para viver</span></div><input class="number-input" type="number" min="1" max="3" data-setting="maxActiveHobbies" value="${state.settings.maxActiveHobbies}"></div></article><article class="card settings-card"><div class="card-header" style="padding-left:0;padding-right:0"><h2 class="card-title"><span class="section-icon">↗</span> Dados locais</h2><span class="date-line">${lastSavedLabel()}</span></div><p>O Personal OS salva tudo neste navegador. Faça backups regulares para não depender de um único dispositivo.</p><div class="data-actions"><button class="btn btn-primary" data-action="export-data">↓ Exportar JSON</button><button class="btn" data-action="export-output-data">↓ Exportar outputs</button><label class="btn import-label">↑ Importar JSON<input id="import-input" type="file" accept="application/json" hidden></label><button class="btn btn-danger" data-action="reset-data">Restaurar dados iniciais</button></div><p class="storage-note">Snapshots locais automáticos: ${readStorageBackups(STORAGE_KEY).length}/5</p></article><article class="card settings-card wide-card"><div class="card-header" style="padding-left:0;padding-right:0"><h2 class="card-title"><span class="section-icon">◷</span> Rotina base</h2><button class="btn" data-action="add-routine">＋ Adicionar bloco</button></div><p>Edite horários e nomes sem transformar um dia fora do plano em falha.</p><div class="routine-editor">${routineRows}</div></article><article class="card settings-card wide-card"><div class="card-header" style="padding-left:0;padding-right:0"><h2 class="card-title"><span class="section-icon">◎</span> Ciclos</h2><button class="btn btn-primary" data-action="open-modal" data-modal="cycle">＋ Novo ciclo</button></div><div class="setting-row"><div><strong>${esc(state.currentCycle.name)}</strong><span>Atual · ${formatDate(state.currentCycle.start)} — ${formatDate(state.currentCycle.end)} · ${state.currentCycle.progress}%</span></div><button class="btn" data-action="edit-cycle" data-id="${state.currentCycle.id}">Editar</button></div><div class="setting-row"><div><strong>${esc(state.nextCycle.name)}</strong><span>Próximo · ${formatDate(state.nextCycle.start)} — ${formatDate(state.nextCycle.end)}</span></div><button class="btn" data-action="edit-cycle" data-id="${state.nextCycle.id}">Editar</button></div></article></div>`;
   }
 
+  function renderThemeSettings() {
+    const grid = $("#view-settings .settings-grid");
+    if (!grid || $("#theme-settings-card")) return;
+    const dark = state.settings.theme === "dark";
+    grid.insertAdjacentHTML("afterbegin", `<article class="card settings-card theme-settings-card" id="theme-settings-card"><div class="card-header" style="padding-left:0;padding-right:0"><h2 class="card-title"><span class="section-icon" data-icon="focus"></span> Aparência</h2><span class="tag ${dark ? "tag-green" : "tag-muted"}">${dark ? "escuro" : "claro"}</span></div><div class="setting-row"><div><strong>Tema da interface</strong><span>Escolha o contraste que combina com seu momento.</span></div><button class="btn" data-action="toggle-theme" aria-pressed="${dark}">${dark ? "Usar tema claro" : "Usar tema escuro"}</button></div></article>`);
+  }
+
   function openModal(kind, item = null) {
     const modal = $("#modal"); let title = "", subtitle = "", body = "", modalClass = "";
     if (kind === "study") { title = item ? "Editar estudo" : "Novo estudo"; subtitle = "Uma unidade pequena de aprendizado, com um próximo passo claro."; body = entityForm("study", item, { name: "Nome do assunto", category: "Categoria", priority: "Prioridade", description: "Descrição", progress: "Progresso (%)", hours: "Horas estudadas", sessions: "Sessões", startDate: "Data de início", notes: "Notas" }); }
@@ -329,10 +350,11 @@
     if (action.dataset.action === "save-review") { saveWeeklyReview(); return; }
     if (action.dataset.action === "export-data") { exportData(); return; }
     if (action.dataset.action === "export-output-data") { exportData("outputs"); return; }
-    if (action.dataset.action === "reset-data") { if (confirm("Restaurar dados iniciais? Isso substitui os dados locais atuais.")) { state = clone(defaultState); saveState(); renderAll(); toast("Dados iniciais restaurados"); } return; }
+    if (action.dataset.action === "toggle-theme") { state.settings.theme = state.settings.theme === "dark" ? "light" : "dark"; applyTheme(state.settings.theme); saveState(); renderAll(); toast(state.settings.theme === "dark" ? "Tema escuro ativado" : "Tema claro ativado"); return; }
+    if (action.dataset.action === "reset-data") { if (confirm("Restaurar dados iniciais? Isso substitui os dados locais atuais.")) { state = clone(defaultState); applyTheme(state.settings.theme); saveState(); renderAll(); toast("Dados iniciais restaurados"); } return; }
     if (action.dataset.action === "toggle-project-task") return;
-    if (action.dataset.action === "add-routine") { state.routine.push({ id: uid("routine"), time: "00:00", end: "", title: "Novo bloco", note: "", movable: false }); saveState(); renderSettings(); toast("Bloco adicionado"); return; }
-    if (action.dataset.action === "remove-routine") { state.routine = state.routine.filter((item) => item.id !== id); saveState(); renderSettings(); return; }
+    if (action.dataset.action === "add-routine") { state.routine.push({ id: uid("routine"), time: "00:00", end: "", title: "Novo bloco", note: "", movable: false }); saveState(); renderSettings(); renderThemeSettings(); hydrateIcons(); toast("Bloco adicionado"); return; }
+    if (action.dataset.action === "remove-routine") { state.routine = state.routine.filter((item) => item.id !== id); saveState(); renderSettings(); renderThemeSettings(); hydrateIcons(); return; }
   });
   document.addEventListener("change", (event) => {
     const target = event.target;
@@ -344,7 +366,7 @@
     if (target.dataset.action === "toggle-work-item") { const context = { kind: target.dataset.sourceType, sourceId: target.dataset.sourceId, sourceTaskId: target.dataset.sourceTaskId }; if (applySourceTaskCompletion(context, target.checked)) { saveState(); renderAll(); toast(target.checked ? "Tarefa concluída" : "Tarefa reaberta"); } return; }
     if (target.dataset.action === "toggle-agenda-task") { const block = state.agendaBlocks.find((entry) => entry.id === target.dataset.id); if (block?.kind === "task") { const context = { kind: block.sourceType, sourceId: block.sourceId, sourceTaskId: block.sourceTaskId, name: block.title, category: block.category }; block.done = target.checked; const source = context.kind === "study" ? state.studies.find((entry) => entry.id === context.sourceId)?.checklist?.[Number(context.sourceTaskId)] : context.kind === "project" ? state.projects.find((entry) => entry.id === context.sourceId)?.tasks.find((entry) => entry.id === context.sourceTaskId) : context.kind === "hobby" ? state.hobbies.find((entry) => entry.id === context.sourceId)?.checklist?.[Number(context.sourceTaskId)] : state.tasks.find((entry) => entry.id === context.sourceId); if (source) source.done = target.checked; registerCompletion(context, target.checked); if (source) registerOutputFromCompletion(source, context, target.checked); saveState(); renderAgenda(); renderDashboard(); } return; }
     if (target.dataset.setting) { state.settings[target.dataset.setting] = clamp(target.value, 1, 5); saveState(); renderAll(); toast("Limite atualizado"); return; }
-    if (target.id === "import-input" && target.files?.[0]) { const reader = new FileReader(); reader.onload = () => { try { const imported = validateImportedState(JSON.parse(reader.result)); state = mergeState(defaultState, imported); saveState(); renderAll(); toast("Backup importado"); } catch (error) { toast(error.message || "Arquivo JSON inválido", "error"); } }; reader.readAsText(target.files[0]); }
+    if (target.id === "import-input" && target.files?.[0]) { const reader = new FileReader(); reader.onload = () => { try { const imported = validateImportedState(JSON.parse(reader.result)); state = mergeState(defaultState, imported); applyTheme(state.settings.theme); saveState(); renderAll(); toast("Backup importado"); } catch (error) { toast(error.message || "Arquivo JSON inválido", "error"); } }; reader.readAsText(target.files[0]); }
   });
   document.addEventListener("submit", (event) => { const form = event.target.closest("form[data-form]"); if (!form) return; if (form.dataset.form === "quick-capture") { event.preventDefault(); const data = getFormData(form); if (!data.title?.trim()) return; state.tasks.unshift({ id: uid("task"), title: data.title.trim(), category: data.category || "Sistema", due: data.due || "Hoje", priority: "Média", done: false }); saveState(); renderAll(); toast("Tarefa capturada"); } });
   document.addEventListener("click", () => queueMicrotask(() => { hydrateIcons(); ensureAgendaActionButton(); }));

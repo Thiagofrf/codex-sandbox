@@ -18,6 +18,7 @@ Abra [index.html](./index.html) diretamente no navegador. Não há build, backen
 - `modules/agenda.js`, `modules/dashboard.js`, `modules/modals.js` — helpers específicos de agenda, dashboard e formulários.
 
 Os dados ficam no `localStorage` com a chave `personal-os:v1`. A tela Configurações permite exportar/importar um backup JSON.
+O tema claro/escuro pode ser alternado pelo botão no topo ou em Configurações e é persistido junto com os demais dados locais.
 
 A Agenda usa uma grade semanal de 06:00 a 24:00. Os blocos da rotina aparecem de segunda a sexta por padrão; arraste qualquer bloco para outro dia ou horário para salvar uma variação da semana.
 As mudanças de dados são normalizadas antes de salvar, e os últimos snapshots ficam disponíveis localmente para recuperação futura.
