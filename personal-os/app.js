@@ -216,6 +216,30 @@
     return refs;
   }
 
+  function renderToday() {
+    const dayIndex = todayAgendaIndex();
+    const agendaBlocks = state.agendaBlocks
+      .filter((block) => block.day === dayIndex)
+      .sort((a, b) => timeToMinutes(a.start) - timeToMinutes(b.start));
+    const agendaHtml = agendaBlocks.length
+      ? agendaBlocks.map((block) => {
+        const isTask = block.kind === "task";
+        return `<div class="today-agenda-row ${block.done ? "done" : ""}"><span class="today-time">${esc(block.start)}</span>${isTask ? `<input class="check" type="checkbox" data-action="toggle-agenda-task" data-id="${block.id}" ${block.done ? "checked" : ""} aria-label="Concluir ${esc(block.title)}">` : `<input class="check" type="checkbox" data-action="toggle-routine" data-id="${block.routineId}" ${state.routineDone[block.routineId] ? "checked" : ""} aria-label="Concluir ${esc(block.title)}">`}<div><strong>${esc(block.title)}</strong><span>${esc(block.note || (isTask ? "Tarefa agendada" : "Rotina base"))}</span></div></div>`;
+      }).join("")
+      : `<div class="empty-state"><strong>Dia aberto</strong><p>Nenhum bloco foi planejado para hoje.</p></div>`;
+    const focus = [
+      ...state.studies.filter((item) => item.status === "active").map((item) => ({ name: item.name, type: "Estudo", progress: getStudyProgress(item) })),
+      ...state.projects.filter((item) => item.status === "active").map((item) => ({ name: item.name, type: "Projeto", progress: getProjectProgress(item) })),
+      ...state.hobbies.filter((item) => item.status === "active").map((item) => ({ name: item.name, type: "Hobby", progress: getHobbyProgress(item) })),
+    ];
+    const taskRefs = workspaceTaskRefs().slice(0, 3);
+    const taskHtml = taskRefs.length
+      ? taskRefs.map((ref) => `<label class="today-task-row"><input class="check" type="checkbox" data-action="toggle-work-item" data-source-type="${ref.context.kind}" data-source-id="${ref.context.sourceId}" data-source-task-id="${ref.context.sourceTaskId}"><span><strong>${esc(ref.title)}</strong><small>${esc(ref.meta)}</small></span><em>${esc(ref.priority || "")}</em></label>`).join("")
+      : `<div class="empty-state"><strong>Nenhum próximo passo</strong><p>Capture algo novo ou aproveite o espaço.</p></div>`;
+
+    $("#view-today").innerHTML = `<div class="page-heading"><div><p class="kicker">${formatLongDate()}</p><h1>Hoje <em>sem fricção</em></h1><p>Uma visão curta para começar o dia sabendo o que merece sua energia.</p></div><div class="heading-actions"><button class="btn" data-action="open-modal" data-modal="task">＋ Capturar tarefa</button><button class="btn btn-primary" data-view-target="agenda">Abrir agenda ↗</button></div></div><div class="today-grid"><article class="card today-agenda-card"><div class="card-header"><h2 class="card-title"><span class="section-icon" data-icon="clock"></span> Agenda de hoje</h2><span class="date-line">${agendaBlocks.length} blocos</span></div><div class="today-agenda-list">${agendaHtml}</div></article><article class="card today-focus-card"><div class="card-header"><h2 class="card-title"><span class="section-icon" data-icon="focus"></span> Foco ativo</h2><span class="tag tag-green">${focus.length} itens</span></div><div class="today-focus-list">${focus.map((item) => `<div class="today-focus-row"><div><strong>${esc(item.name)}</strong><span>${esc(item.type)}</span></div><div class="today-focus-progress"><strong>${item.progress}%</strong><div class="progress-line"><span style="width:${item.progress}%"></span></div></div></div>`).join("") || `<div class="empty-state"><strong>Escolha um foco</strong><p>Ative um estudo, projeto ou hobby.</p></div>`}</div><div class="today-cycle"><span class="eyebrow">${esc(state.currentCycle.name)}</span><strong>${state.currentCycle.progress}%</strong><div class="progress-line"><span style="width:${clamp(state.currentCycle.progress)}%"></span></div><small>${esc(state.currentCycle.objective)}</small></div></article></div><div class="today-grid today-lower-grid"><article class="card today-task-card"><div class="card-header"><h2 class="card-title"><span class="section-icon" data-icon="task"></span> Próximos 3 passos</h2><span class="date-line">marque conforme avançar</span></div><div class="today-task-list">${taskHtml}</div></article><article class="card today-capture-card"><div class="card-header"><h2 class="card-title"><span class="section-icon" data-icon="arrow"></span> Captura rápida</h2></div><form class="today-capture-form" data-form="quick-capture"><input class="input" name="title" required placeholder="O que precisa existir depois de hoje?"><div class="field-grid"><select class="select" name="category"><option>Estudos</option><option>Side Project</option><option>Audiovisual</option><option>Leitura</option><option>Sistema</option><option>Lazer</option></select><input class="input" name="due" value="Hoje" aria-label="Quando"></div><button class="btn btn-primary" type="submit">Adicionar tarefa</button></form></article></div>`;
+  }
+
   function getWeekStart(offset = 0) { const date = new Date(today); const day = date.getDay(); const diff = day === 0 ? -6 : 1 - day; date.setDate(date.getDate() + diff + offset * 7); date.setHours(12, 0, 0, 0); return date; }
   const AGENDA_START_MINUTES = 6 * 60;
   const AGENDA_END_MINUTES = 24 * 60;
