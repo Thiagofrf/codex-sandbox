@@ -313,3 +313,69 @@ a { color: inherit; }
 .agenda-event-rest { background: #c5d5e8; border-left: 3px solid #6b8caf; }
 .agenda-event-flex { background: #f0d993; border-left: 3px solid #bd9125; }
 @media (max-width: 1050px) { .agenda-layout { grid-template-columns: 1fr; } }
+
+/* Dashboard icon and metric alignment */
+.focus-emoji {
+  width: 38px;
+  height: 38px;
+  flex: 0 0 38px;
+  border-radius: 10px;
+  font-size: 19px;
+}
+.next-symbol {
+  width: 32px;
+  height: 32px;
+  flex: 0 0 32px;
+  border-radius: 9px;
+  font-size: 16px;
+  line-height: 1;
+}
+.metric-rings {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: center;
+  gap: 10px;
+  padding: 22px 18px 17px;
+}
+.ring {
+  width: 100%;
+  height: 112px;
+  flex: none;
+  border-radius: 0;
+  background: transparent !important;
+}
+.ring::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 80px;
+  height: 80px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: conic-gradient(var(--ring-color, var(--green)) var(--value), #edf1ef 0);
+}
+.ring::after {
+  inset: auto;
+  top: 8px;
+  left: 50%;
+  width: 64px;
+  height: 64px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: var(--surface);
+}
+.metric-rings .ring:nth-child(2) { --ring-color: var(--orange); }
+.metric-rings .ring:nth-child(3) { --ring-color: var(--purple); }
+.ring strong {
+  top: 29px;
+  width: auto;
+  font-size: 17px;
+}
+.ring span {
+  top: 91px;
+  bottom: auto;
+  width: 100%;
+  font-size: 9px;
+  letter-spacing: .01em;
+}
