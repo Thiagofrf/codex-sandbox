@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f4f6f5" />
+    <meta name="description" content="Personal OS — seu sistema pessoal de foco, rotina e evolução." />
+    <title>Personal OS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" id="sidebar">
+        <div class="brand-row">
+          <a class="brand" href="#dashboard" data-view="dashboard"><span class="brand-mark">✦</span><span>personal<span class="brand-dot">.</span>os</span></a>
+          <button class="icon-button mobile-only" id="close-sidebar" aria-label="Fechar menu">×</button>
+        </div>
+
+        <div class="sidebar-profile">
+          <div class="avatar">TF</div>
+          <div><strong>Thiago</strong><span>Construindo com intenção</span></div>
+        </div>
+
+        <nav class="main-nav" aria-label="Navegação principal">
+          <p class="nav-label">Workspace</p>
+          <button class="nav-item active" data-view="dashboard"><span class="nav-icon">⌂</span><span>Dashboard</span><span class="nav-shortcut">⌘ 1</span></button>
+          <button class="nav-item" data-view="agenda"><span class="nav-icon">▦</span><span>Agenda</span><span class="nav-shortcut">⌘ 2</span></button>
+          <button class="nav-item" data-view="studies"><span class="nav-icon">◒</span><span>Estudos</span><span class="nav-shortcut">⌘ 3</span></button>
+          <button class="nav-item" data-view="projects"><span class="nav-icon">↗</span><span>Projects</span><span class="nav-shortcut">⌘ 4</span></button>
+          <button class="nav-item" data-view="hobbies"><span class="nav-icon">✧</span><span>Hobbies</span><span class="nav-shortcut">⌘ 5</span></button>
+          <p class="nav-label nav-label-spaced">Reflect</p>
+          <button class="nav-item" data-view="metrics"><span class="nav-icon">⌁</span><span>Métricas</span><span class="nav-shortcut">⌘ 6</span></button>
+          <button class="nav-item" data-view="settings"><span class="nav-icon">⚙</span><span>Configurações</span></button>
+        </nav>
+
+        <div class="sidebar-bottom">
+          <div class="cycle-mini"><span class="eyebrow">Ciclo atual</span><strong id="sidebar-cycle-name">Cycle 01</strong><span class="cycle-date" id="sidebar-cycle-date">06 ago — 27 set</span><div class="mini-progress"><span id="sidebar-cycle-progress"></span></div></div>
+          <div class="sidebar-footer"><span>local mode</span><span class="status-dot"></span></div>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <button class="icon-button menu-trigger mobile-only" id="open-sidebar" aria-label="Abrir menu">☰</button>
+          <div class="breadcrumbs"><span>Workspace</span><span class="crumb-separator">/</span><strong id="page-title">Dashboard</strong></div>
+          <div class="topbar-actions"><span class="today-label" id="topbar-date"></span><button class="avatar avatar-small" id="quick-settings" aria-label="Abrir configurações">TF</button></div>
+        </header>
+
+        <div id="toast-region" class="toast-region" aria-live="polite"></div>
+
+        <section class="view active" id="view-dashboard" data-view-panel="dashboard"></section>
+        <section class="view" id="view-agenda" data-view-panel="agenda"></section>
+        <section class="view" id="view-studies" data-view-panel="studies"></section>
+        <section class="view" id="view-projects" data-view-panel="projects"></section>
+        <section class="view" id="view-hobbies" data-view-panel="hobbies"></section>
+        <section class="view" id="view-metrics" data-view-panel="metrics"></section>
+        <section class="view" id="view-settings" data-view-panel="settings"></section>
+      </main>
+    </div>
+
+    <div class="modal-backdrop" id="modal-backdrop" hidden>
+      <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"></div>
+    </div>
+
+    <template id="empty-template"><div class="empty-state"><span class="empty-icon">✦</span><strong>Nada por aqui ainda</strong><p>Adicione seu primeiro item para começar.</p></div></template>
+    <script src="app.js"></script>
+  </body>
+</html>
