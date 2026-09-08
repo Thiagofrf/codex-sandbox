@@ -119,11 +119,11 @@ a { color: inherit; }
 
 .focus-card { padding-bottom: 19px; }
 .focus-list { padding: 0 21px; display: grid; gap: 9px; }
-.focus-item { display: flex; align-items: center; gap: 11px; padding: 11px 12px; border: 1px solid #edf1ef; border-radius: 10px; background: var(--surface-soft); }
-.focus-emoji { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 8px; background: var(--green-soft); font-size: 15px; }
+.focus-item { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 12px; padding: 11px 12px; border: 1px solid #edf1ef; border-radius: 10px; background: var(--surface-soft); }
+.focus-copy { min-width: 0; }
 .focus-item strong { display: block; font-size: 11px; }
 .focus-item span { display: block; color: var(--muted); margin-top: 3px; font: 9px var(--mono); }
-.focus-item .tag { margin-left: auto; }
+.focus-item .tag { margin: 0; }
 .tag, .status-badge, .priority-badge { display: inline-flex; align-items: center; gap: 5px; min-height: 21px; padding: 0 8px; border-radius: 99px; font: 9px var(--mono); white-space: nowrap; }
 .tag-green, .status-active { background: var(--green-soft); color: var(--green); }
 .tag-orange, .status-next { background: var(--orange-soft); color: var(--orange); }
@@ -201,8 +201,7 @@ a { color: inherit; }
 .routine-name, .next-copy strong, .focus-item strong { font-size: 11px; line-height: 1.45; }
 .routine-meta, .next-copy span, .focus-item span { line-height: 1.35; }
 .focus-item { min-width: 0; }
-.focus-item > div { min-width: 0; }
-.focus-emoji { display: flex; align-items: center; justify-content: center; flex: 0 0 28px; line-height: 1; text-align: center; }
+.focus-item .tag { display: inline-flex; align-items: center; justify-content: center; min-width: 58px; min-height: 24px; margin: 0; padding-inline: 9px; line-height: 1; }
 .score-label { line-height: 1.35; }
 .board-item strong, .hobby-item strong, .detail-row, .setting-row strong { line-height: 1.45; }
 .board-item p, .backlog-intro, .settings-card p { line-height: 1.55; }
@@ -314,19 +313,7 @@ a { color: inherit; }
 .agenda-event-flex { background: #f0d993; border-left: 3px solid #bd9125; }
 @media (max-width: 1050px) { .agenda-layout { grid-template-columns: 1fr; } }
 
-/* Dashboard icon and metric alignment */
-.focus-emoji {
-  width: 38px;
-  height: 38px;
-  flex: 0 0 38px;
-  border-radius: 10px;
-  font-size: 19px;
-}
-.focus-emoji .ui-icon {
-  width: 22px;
-  height: 22px;
-  stroke-width: 1.8;
-}
+/* Dashboard task icon and metric alignment */
 .next-symbol {
   width: 32px;
   height: 32px;
