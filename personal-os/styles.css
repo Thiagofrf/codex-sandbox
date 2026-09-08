@@ -344,6 +344,7 @@ a { color: inherit; }
 .output-log-main span, .output-log-main small { display: block; margin-top: 4px; color: var(--muted); font: 9px/1.4 var(--mono); }
 .output-log-main small { color: var(--muted-2); }
 .output-log-quantity { color: var(--green); font: 10px var(--mono); }
+.storage-note { margin-top: 9px; color: var(--muted-2) !important; font: 8px/1.4 var(--mono) !important; }
 .today-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(320px, .75fr); gap: 18px; margin-bottom: 18px; }
 .today-agenda-list, .today-focus-list, .today-task-list { padding: 0 21px 12px; }
 .today-agenda-row, .today-task-row, .today-focus-row { display: grid; align-items: center; gap: 10px; border-top: 1px solid #f0f2f1; }

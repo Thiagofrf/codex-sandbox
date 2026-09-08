@@ -13,8 +13,26 @@
   };
 
   const write = (key, value) => {
-    localStorage.setItem(key, JSON.stringify(value));
+    const serialized = JSON.stringify(value);
+    try {
+      const previous = localStorage.getItem(key);
+      const backups = JSON.parse(localStorage.getItem(`${key}:backups`) || "[]");
+      if (previous) backups.push({ savedAt: new Date().toISOString(), data: JSON.parse(previous) });
+      localStorage.setItem(`${key}:backups`, JSON.stringify(backups.slice(-5)));
+    } catch (error) {
+      // A failed snapshot must not prevent the current state from being saved.
+    }
+    localStorage.setItem(key, serialized);
+    localStorage.setItem(`${key}:meta`, JSON.stringify({ lastSavedAt: new Date().toISOString() }));
   };
 
-  window.PersonalOSStorage = { read, write };
+  const readMeta = (key) => {
+    try { return JSON.parse(localStorage.getItem(`${key}:meta`) || "{}"); } catch (error) { return {}; }
+  };
+
+  const readBackups = (key) => {
+    try { return JSON.parse(localStorage.getItem(`${key}:backups`) || "[]"); } catch (error) { return []; }
+  };
+
+  window.PersonalOSStorage = { read, write, readMeta, readBackups };
 })();
