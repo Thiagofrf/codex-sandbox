@@ -10,14 +10,20 @@ Abra [index.html](./index.html) diretamente no navegador. Não há build, backen
 
 - `index.html` — shell da aplicação e views.
 - `styles.css` — design system, componentes e responsividade.
-- `app.js` — estado inicial, renderização, eventos, CRUD e persistência.
+- `app.js` — composição das views, eventos, CRUD e fluxo da aplicação.
+- `modules/state.js` — versão do schema, migrações, merge e validação de importação.
+- `modules/storage.js` — leitura, persistência, metadados e snapshots locais.
+- `modules/metrics.js` — outputs e regras de métricas.
+- `modules/studies.js`, `modules/projects.js`, `modules/hobbies.js` — progresso e regras das entidades.
+- `modules/agenda.js`, `modules/dashboard.js`, `modules/modals.js` — helpers específicos de agenda, dashboard e formulários.
 
 Os dados ficam no `localStorage` com a chave `personal-os:v1`. A tela Configurações permite exportar/importar um backup JSON.
 
 A Agenda usa uma grade semanal de 06:00 a 24:00. Os blocos da rotina aparecem de segunda a sexta por padrão; arraste qualquer bloco para outro dia ou horário para salvar uma variação da semana.
+As mudanças de dados são normalizadas antes de salvar, e os últimos snapshots ficam disponíveis localmente para recuperação futura.
 
 ## Próxima iteração sugerida
 
-1. Extrair o estado e os módulos de domínio em arquivos separados (`store`, `entities`, `views`, `components`).
-2. Adicionar uma visão de revisão semanal com notas, outputs e aprendizados.
-3. Adicionar filtros e busca quando o backlog crescer.
+1. Adicionar busca e filtros quando o backlog crescer.
+2. Criar testes de contrato para migrações e regras de conclusão.
+3. Avaliar uma camada de sincronização somente depois de o modelo local estar estável.
