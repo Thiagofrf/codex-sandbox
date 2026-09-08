@@ -14,6 +14,8 @@ Abra [index.html](./index.html) diretamente no navegador. Não há build, backen
 
 Os dados ficam no `localStorage` com a chave `personal-os:v1`. A tela Configurações permite exportar/importar um backup JSON.
 
+A Agenda usa uma grade semanal de 06:00 a 24:00. Os blocos da rotina aparecem de segunda a sexta por padrão; arraste qualquer bloco para outro dia ou horário para salvar uma variação da semana.
+
 ## Próxima iteração sugerida
 
 1. Extrair o estado e os módulos de domínio em arquivos separados (`store`, `entities`, `views`, `components`).
