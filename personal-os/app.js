@@ -70,6 +70,7 @@
     ],
     currentCycle: { id: "cycle-01", name: "Cycle 01", start: "2026-08-06", end: "2026-09-27", objective: "Criar ritmo com JavaScript, TypeScript e entregas pequenas.", study: "JavaScript / TypeScript", project: "CoPickr", hobby: "Audiovisual", goals: ["3 sessões de programação por semana", "Publicar uma demo do CoPickr", "Produzir uma peça audiovisual"], progress: 42 },
     nextCycle: { id: "cycle-02", name: "Cycle 02", start: "2026-09-28", end: "2026-11-22", objective: "Conectar backend, produto e publicação.", study: "Backend", project: "Barcelona News Aggregator", hobby: "Audiovisual", goals: ["Começar Node.js e APIs", "Definir uma rotina de publicação"] },
+    cycleHistory: [],
     metrics: { training: { label: "Treinos", icon: "◉", target: 4, value: 4, input: true }, walks: { label: "Caminhadas", icon: "⌁", target: 5, value: 4, input: true }, programming: { label: "Programação", icon: "⌘", target: 4, value: 3, input: true }, project: { label: "Side project", icon: "↗", target: 2, value: 2, input: true }, audiovisual: { label: "Audiovisual", icon: "✧", target: 1, value: 1, input: true }, reading: { label: "Leitura", icon: "▤", target: 3, value: 2, input: true }, sleep: { label: "Sono", icon: "☾", target: 7, value: 6, unit: "h", input: true }, leisure: { label: "Lazer", icon: "○", target: 3, value: 2, input: true } },
     outputs: { features: 2, published: 1, articles: 1, exercises: 12 },
     backlog: [
@@ -106,8 +107,29 @@
   function getActiveProjectCount() { return state.projects.filter((item) => item.status === "active").length; }
   function getActiveHobbyCount() { return state.hobbies.filter((item) => item.status === "active").length; }
   function formatHours(value) { const number = Number(value) || 0; return `${Math.floor(number)}h${number % 1 ? `${String(Math.round((number % 1) * 60)).padStart(2, "0")}` : ""}`; }
+  const iconPaths = {
+    dashboard: '<path d="M4 11.5 12 4l8 7.5"/><path d="M6.5 10.5V20h11v-9.5M10 20v-5h4v5"/>',
+    agenda: '<rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 9h16M8 13h2M14 13h2M8 16h2"/>',
+    study: '<path d="m4 6 8-3 8 3-8 3-8-3Z"/><path d="M6 8.5V14c2.5 2 9.5 2 12 0V8.5M20 7v7"/><path d="M12 18v3"/>',
+    project: '<path d="M5 19 19 5"/><path d="M8 5h11v11"/><path d="M5 8v11h11"/>',
+    hobby: '<path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="7"/><path d="m8.5 8.5 7 7M15.5 8.5l-7 7"/>',
+    metrics: '<path d="M5 19V9M12 19V5M19 19v-8"/><path d="M3 19h18"/>',
+    settings: '<path d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Z"/><path d="m19 13.5 1.2 1-.2 1.7-1.5.7-.4 1.7-1.5.8-1.3-.8-1.5.8-1.3-.8-1.5.8-1.5-.8-.4-1.7-1.5-.7-.2-1.7 1.2-1-1.2-1 .2-1.7 1.5-.7.4-1.7 1.5-.8 1.3.8 1.5-.8 1.3.8 1.5-.8 1.5.8.4 1.7 1.5.7.2 1.7-1.2 1Z"/>',
+    check: '<path d="m5 12 4 4L19 6"/>',
+    arrow: '<path d="M5 12h13M13 6l6 6-6 6"/>',
+    clock: '<circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3 2"/>',
+    focus: '<circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2"/>',
+    task: '<path d="M5 6h14M5 12h14M5 18h9"/><path d="m17 17 1.5 1.5L21 16"/>',
+    backlog: '<path d="M5 6h14M5 12h14M5 18h14"/><path d="M8 6v12M16 6v12"/>',
+    cycle: '<circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3 2M17.5 4.5l2 2"/>',
+    output: '<path d="M5 19 19 5M11 5h8v8M5 11v8h8"/>',
+  };
+  function icon(name, className = "") { return `<svg class="ui-icon ${className}" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${iconPaths[name] || iconPaths.focus}</svg>`; }
+  const glyphIconNames = { "◷": "clock", "→": "arrow", "✦": "focus", "⌁": "metrics", "▦": "agenda", "☷": "backlog", "◒": "study", "↗": "project", "✧": "hobby", "◎": "focus", "✓": "check", "▤": "output", "⊙": "settings" };
+  function hydrateIcons(root = document) { $$(".nav-icon, .section-icon", root).forEach((element) => { const name = element.dataset.icon || glyphIconNames[element.textContent.trim()]; if (name && !element.querySelector("svg")) { element.dataset.icon = name; element.innerHTML = icon(name); } }); }
   function renderNav() { $$(".nav-item, .brand").forEach((button) => button.classList.toggle("active", button.dataset.view === activeView)); $("#page-title").textContent = ({ dashboard: "Dashboard", agenda: "Agenda", studies: "Estudos", projects: "Projects", hobbies: "Hobbies", metrics: "Métricas", settings: "Configurações" })[activeView]; }
-  function renderAll() { renderNav(); refreshSidebar(); renderDashboard(); renderAgenda(); renderStudies(); renderProjects(); renderHobbies(); renderMetrics(); renderSettings(); }
+  function renderAll() { renderNav(); refreshSidebar(); renderDashboard(); renderAgenda(); renderStudies(); renderProjects(); renderHobbies(); renderMetrics(); renderSettings(); renderCycleHistory(); hydrateIcons(); }
+  function renderCycleHistory() { const container = $("#view-settings"); if (!container) return; const history = state.cycleHistory || []; const items = history.length ? history.map((cycle) => `<div class="history-item"><div><strong>${esc(cycle.name)}</strong><span>${formatDate(cycle.start)} — ${formatDate(cycle.end || cycle.completedAt)} · ${esc(cycle.objective || "Sem objetivo registrado")}</span></div><span class="status-badge status-done">concluído</span></div>`).join("") : `<div class="empty-state"><strong>Nenhum ciclo concluído ainda</strong><p>Quando um ciclo terminar, registre o que mudou e avance para o próximo.</p></div>`; container.insertAdjacentHTML("beforeend", `<article class="card settings-card wide-card cycle-history-card"><div class="card-header" style="padding-left:0;padding-right:0"><h2 class="card-title"><span class="section-icon" data-icon="cycle"></span> Histórico de ciclos</h2><button class="btn" data-action="advance-cycle">Concluir atual e avançar</button></div>${items}</article>`); }
 
   function renderDashboard() {
     const routineDone = Object.values(state.routineDone).filter(Boolean).length;
@@ -218,6 +240,7 @@
     if (action.dataset.action === "delete-item") { if (confirm("Remover este item?")) deleteEntity(type, id); return; }
     if (action.dataset.action === "edit-item") { if (id) openEdit(type, id); return; }
     if (action.dataset.action === "edit-cycle") { openModal("cycle", id === state.currentCycle.id ? state.currentCycle : state.nextCycle); return; }
+    if (action.dataset.action === "advance-cycle") { if (!confirm("Concluir o ciclo atual e transformar o próximo em atual?")) return; state.cycleHistory = state.cycleHistory || []; state.cycleHistory.unshift({ ...clone(state.currentCycle), progress: 100, completedAt: currentISO }); state.currentCycle = { ...clone(state.nextCycle), progress: 0 }; state.nextCycle = { id: uid("cycle"), name: `Cycle ${String(state.cycleHistory.length + 2).padStart(2, "0")}`, start: "", end: "", objective: "", study: "", project: "", hobby: "", goals: [], progress: 0 }; saveState(); renderAll(); toast("Ciclo concluído. Bom começo para o próximo."); return; }
     if (action.dataset.action === "agenda-prev") { agendaOffset -= 1; renderAgenda(); return; }
     if (action.dataset.action === "agenda-next") { agendaOffset += 1; renderAgenda(); return; }
     if (action.dataset.action === "agenda-today") { agendaOffset = 0; renderAgenda(); return; }

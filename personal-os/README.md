@@ -17,7 +17,5 @@ Os dados ficam no `localStorage` com a chave `personal-os:v1`. A tela Configura�
 ## Próxima iteração sugerida
 
 1. Extrair o estado e os módulos de domínio em arquivos separados (`store`, `entities`, `views`, `components`).
-2. Transformar ciclos em uma coleção histórica para revisar ciclos concluídos.
-3. Adicionar uma visão de revisão semanal com notas, outputs e aprendizados.
-4. Adicionar filtros e busca quando o backlog crescer.
-
+2. Adicionar uma visão de revisão semanal com notas, outputs e aprendizados.
+3. Adicionar filtros e busca quando o backlog crescer.
