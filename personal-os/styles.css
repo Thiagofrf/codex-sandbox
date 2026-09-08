@@ -292,7 +292,7 @@ a { color: inherit; }
 .modal-head h2 { line-height: 1.2; }
 .modal-head p { line-height: 1.55; }
 .modal-footer { align-items: center; }
-.cycle-history-card { padding-bottom: 21px; }
+.cycle-history-card { margin-top: 18px; padding-bottom: 21px; }
 .history-item { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 13px 0; border-top: 1px solid #f0f2f1; }
 .history-item:first-of-type { border-top: 0; }
 .history-item strong { display: block; font-size: 11px; line-height: 1.4; }
@@ -357,6 +357,28 @@ a { color: inherit; }
 @media (max-width: 900px) { .review-summary-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .review-layout { grid-template-columns: 1fr; } }
 @media (max-width: 540px) { .review-summary-grid { grid-template-columns: 1fr 1fr; } .review-actions { align-items: flex-start; flex-direction: column; } }
 
+/* Dark theme contrast pass */
+:root[data-theme="dark"] .cycle-banner,
+:root[data-theme="dark"] .today-cycle {
+  background: #0b1411;
+  border: 1px solid #263b33;
+  color: var(--ink);
+}
+:root[data-theme="dark"] .cycle-banner h2,
+:root[data-theme="dark"] .today-cycle > strong { color: var(--ink); }
+:root[data-theme="dark"] .cycle-banner p,
+:root[data-theme="dark"] .today-cycle small { color: #a8bbb2; }
+:root[data-theme="dark"] .cycle-banner .progress-line,
+:root[data-theme="dark"] .today-cycle .progress-line { background: #263b33; }
+:root[data-theme="dark"] .agenda-event { color: #f4fbf7; border-color: rgba(255, 255, 255, .18); box-shadow: 0 3px 8px rgba(0, 0, 0, .22); }
+:root[data-theme="dark"] .agenda-event span { opacity: .92; }
+:root[data-theme="dark"] .agenda-event-work { background: #7f3f2c; border-left-color: #d7684a; }
+:root[data-theme="dark"] .agenda-event-movement { background: #246554; border-left-color: #43ad8d; }
+:root[data-theme="dark"] .agenda-event-study { background: #5d477a; border-left-color: #9c7fc4; }
+:root[data-theme="dark"] .agenda-event-life { background: #75684e; border-left-color: #b7a885; }
+:root[data-theme="dark"] .agenda-event-rest { background: #355577; border-left-color: #79a9df; }
+:root[data-theme="dark"] .agenda-event-flex { background: #796322; border-left-color: #d5b753; }
+
 /* Agenda timeline */
 .agenda-card { overflow: hidden; }
 .agenda-help { margin: -5px 21px 15px; color: var(--muted); font-size: 10px; line-height: 1.5; }
@@ -378,11 +400,11 @@ a { color: inherit; }
 .agenda-day-grid { position: relative; height: 1224px; overflow: hidden; background-image: linear-gradient(to bottom, rgba(215,223,220,.75) 1px, transparent 1px), linear-gradient(to bottom, rgba(231,236,234,.8) 1px, transparent 1px); background-size: 100% 68px, 100% 34px; transition: background-color .15s ease; }
 .agenda-day-grid.drag-over { background-color: var(--green-soft); }
 .agenda-free-label { position: absolute; top: 27px; left: 0; right: 0; color: var(--muted-2); font: 8px var(--mono); text-align: center; text-transform: uppercase; letter-spacing: .1em; }
-.agenda-event { position: absolute; left: 4px; right: 4px; z-index: 2; overflow: hidden; padding: 7px 8px; border: 1px solid rgba(255,255,255,.4); border-radius: 7px; box-shadow: 0 3px 8px rgba(25,55,45,.08); cursor: grab; color: var(--ink); font-size: 9px; line-height: 1.3; transition: filter .15s ease, transform .15s ease; }
+.agenda-event { position: absolute; left: 4px; right: 4px; z-index: 2; overflow: hidden; padding: 7px 8px; border: 1px solid rgba(255,255,255,.4); border-radius: 7px; box-shadow: 0 3px 8px rgba(25,55,45,.08); cursor: grab; color: #21312b; font-size: 10px; line-height: 1.35; transition: filter .15s ease, transform .15s ease; }
 .agenda-event:hover { filter: brightness(.98) saturate(1.08); transform: translateY(-1px); }
 .agenda-event:active { cursor: grabbing; }
-.agenda-event strong { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 10px; font-weight: 800; }
-.agenda-event span { display: block; margin-top: 3px; font: 8px var(--mono); opacity: .78; }
+.agenda-event strong { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px; font-weight: 800; }
+.agenda-event span { display: block; margin-top: 4px; font: 9px var(--mono); opacity: .82; }
 .agenda-event-check { position: absolute; top: 6px; right: 6px; width: 14px; height: 14px; margin: 0; accent-color: var(--green); cursor: pointer; }
 .agenda-event:has(.agenda-event-check) strong { padding-right: 18px; }
 .agenda-event.is-done { opacity: .62; }
