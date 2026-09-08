@@ -246,6 +246,12 @@ a { color: inherit; }
 .study-notes { margin-top: 15px; padding: 10px 11px; border-radius: 8px; background: var(--surface-soft); color: var(--muted); font-size: 9px; line-height: 1.5; }
 .study-notes span { display: block; margin-bottom: 4px; color: var(--ink); font: 8px var(--mono); text-transform: uppercase; letter-spacing: .08em; }
 .next-sequence-card { margin-top: 16px; }
+.hobby-active-section { margin-top: 26px; }
+.hobby-active-card .card-title { gap: 8px; }
+.hobby-active-card .hobby-emoji { width: 21px; height: 21px; border-radius: 6px; font-size: 12px; }
+.hobby-roadmap-card, .hobby-sequence-card { margin-top: 18px; }
+.hobby-roadmap-card .hobby-roadmap { padding-bottom: 24px; }
+.hobby-sequence-card .roadmap-list { padding: 0 21px 21px; }
 @media (max-width: 820px) { .heading-actions { margin-top: 5px; } }
 @media (max-width: 700px) { .active-studies-grid { grid-template-columns: 1fr; } .section-heading-inline { display: block; } .section-heading-inline .date-line { display: block; margin-top: 8px; } }
 
