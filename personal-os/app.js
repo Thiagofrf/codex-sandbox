@@ -261,6 +261,8 @@
     if (target.dataset.setting) { state.settings[target.dataset.setting] = clamp(target.value, 1, 5); saveState(); renderAll(); toast("Limite atualizado"); return; }
     if (target.id === "import-input" && target.files?.[0]) { const reader = new FileReader(); reader.onload = () => { try { state = mergeState(defaultState, JSON.parse(reader.result)); saveState(); renderAll(); toast("Backup importado"); } catch { toast("Arquivo JSON inválido", "error"); } }; reader.readAsText(target.files[0]); }
   });
+  document.addEventListener("click", () => queueMicrotask(hydrateIcons));
+  document.addEventListener("change", () => queueMicrotask(hydrateIcons));
   document.addEventListener("input", (event) => { const target = event.target; if (!target.dataset.routineField) return; const item = state.routine.find((entry) => entry.id === target.dataset.id); if (item) { item[target.dataset.routineField] = target.value; saveState(); } });
   document.addEventListener("dragstart", (event) => { const item = event.target.closest(".board-item"); if (item) { event.dataTransfer.setData("text/plain", JSON.stringify({ id: item.dataset.id, type: item.dataset.type })); item.style.opacity = ".5"; } });
   document.addEventListener("dragend", (event) => { const item = event.target.closest(".board-item"); if (item) item.style.opacity = ""; });
