@@ -327,6 +327,11 @@ a { color: inherit; }
   height: 18px;
   stroke-width: 1.9;
 }
+.output-value { display: flex; align-items: baseline; gap: 6px; }
+.output-input { width: 58px; border: 0; border-bottom: 1px solid var(--line-strong); padding: 0 0 2px; color: var(--ink); background: transparent; font: 700 18px var(--sans); letter-spacing: -.05em; }
+.output-input:focus { border-color: var(--green); outline: 0; }
+.output-value span { color: var(--muted); font: 9px var(--mono); }
+.output-tile small { display: block; margin-top: 8px; color: var(--muted-2); font: 8px/1.4 var(--mono); }
 .metric-rings {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
