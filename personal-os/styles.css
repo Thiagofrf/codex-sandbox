@@ -345,6 +345,11 @@ a { color: inherit; }
 .output-log-main small { color: var(--muted-2); }
 .output-log-quantity { color: var(--green); font: 10px var(--mono); }
 .storage-note { margin-top: 9px; color: var(--muted-2) !important; font: 8px/1.4 var(--mono) !important; }
+.card-header > * { min-width: 0; }
+.card-header .date-line { max-width: 45%; overflow: hidden; text-align: right; text-overflow: ellipsis; white-space: nowrap; }
+.output-log-row .icon-button { flex: 0 0 30px; }
+@media (max-width: 540px) { .card-header { align-items: flex-start; flex-wrap: wrap; } .card-header .date-line { max-width: 100%; text-align: left; } .output-log-row { grid-template-columns: minmax(0, 1fr) auto 30px; gap: 8px; } .output-log-main strong { white-space: normal; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
 .today-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(320px, .75fr); gap: 18px; margin-bottom: 18px; }
 .today-agenda-list, .today-focus-list, .today-task-list { padding: 0 21px 12px; }
 .today-agenda-row, .today-task-row, .today-focus-row { display: grid; align-items: center; gap: 10px; border-top: 1px solid #f0f2f1; }
