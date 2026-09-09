@@ -22,6 +22,7 @@ O tema claro/escuro pode ser alternado pelo botão no topo ou em Configurações
 A última seção aberta também é preservada localmente e refletida no hash da URL, permitindo recarregar o `index.html` sem voltar automaticamente ao Dashboard.
 O progresso do ciclo atual é derivado automaticamente da média dos checklists/tarefas concluídos nos estudos, project e hobby vinculados; não existe um percentual manual para o ciclo.
 Quando todas as tarefas de um estudo, project ou hobby são concluídas, o item é movido automaticamente para `DONE`.
+Se uma conclusão foi feita por engano, use `Reabrir` no card `DONE`: o item volta para `ACTIVE` com o checklist limpo para começar novamente.
 
 A Agenda usa uma grade semanal de 06:00 a 24:00. Os blocos da rotina aparecem de segunda a sexta por padrão; arraste qualquer bloco para outro dia ou horário para salvar uma variação da semana.
 As mudanças de dados são normalizadas antes de salvar, e os últimos snapshots ficam disponíveis localmente para recuperação futura.
