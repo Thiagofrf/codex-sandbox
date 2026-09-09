@@ -8,9 +8,9 @@
   const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
   const { CURRENT_SCHEMA_VERSION, merge: mergeState, ensureOutputState, ensureCompletionState, validateImported: validateImportedState } = window.PersonalOSState;
   const { OUTPUT_TYPES, definitions: outputDefinitions, calculateTotals: calculateOutputTotals, inferOutputType, completionMetric } = window.PersonalOSMetrics;
-  const { getProgress: getStudyProgress, syncProgress: syncStudyProgress } = window.PersonalOSStudies;
-  const { getProgress: getProjectProgress, syncProgress: syncProjectProgress } = window.PersonalOSProjects;
-  const { getProgress: getHobbyProgress, syncProgress: syncHobbyProgress } = window.PersonalOSHobbies;
+  const { getProgress: getStudyProgress, syncProgress: syncStudyProgress, syncStatuses: syncStudyStatuses } = window.PersonalOSStudies;
+  const { getProgress: getProjectProgress, syncProgress: syncProjectProgress, syncStatuses: syncProjectStatuses } = window.PersonalOSProjects;
+  const { getProgress: getHobbyProgress, syncProgress: syncHobbyProgress, syncStatuses: syncHobbyStatuses } = window.PersonalOSHobbies;
   const { todayIndex: todayAgendaIndex } = window.PersonalOSAgenda;
   const { workspaceTaskSummary } = window.PersonalOSDashboard;
   const { getFormData } = window.PersonalOSModals;
@@ -141,12 +141,14 @@
     syncStudyProgress(loaded);
     syncHobbyProgress(loaded, fallbackHobbyChecklists);
     syncProjectProgress(loaded);
+    syncCompletedStatuses(loaded);
     syncCycleProgress(loaded);
     ensureAgendaBlocks(loaded);
     syncAgendaCompletionFromSources(loaded);
     return loaded;
   }
-  function saveState() { ensureOutputState(state, defaultState.outputs, OUTPUT_TYPES); ensureCompletionState(state); syncOutputTotals(state); syncStudyProgress(state); syncHobbyProgress(state, fallbackHobbyChecklists); syncProjectProgress(state); syncCycleProgress(state); ensureAgendaBlocks(state); syncAgendaCompletionFromSources(state); writeStorage(STORAGE_KEY, state); refreshSidebar(); }
+  function saveState() { ensureOutputState(state, defaultState.outputs, OUTPUT_TYPES); ensureCompletionState(state); syncOutputTotals(state); syncStudyProgress(state); syncHobbyProgress(state, fallbackHobbyChecklists); syncProjectProgress(state); syncCompletedStatuses(state); syncCycleProgress(state); ensureAgendaBlocks(state); syncAgendaCompletionFromSources(state); writeStorage(STORAGE_KEY, state); refreshSidebar(); }
+  function syncCompletedStatuses(targetState) { syncStudyStatuses(targetState); syncProjectStatuses(targetState); syncHobbyStatuses(targetState); }
   function toast(message, type = "success") { const item = document.createElement("div"); item.className = `toast ${type}`; item.textContent = message; $("#toast-region").append(item); setTimeout(() => item.remove(), 2800); }
   function refreshSidebar() { const cycle = state.currentCycle; $("#sidebar-cycle-name").textContent = cycle.name; $("#sidebar-cycle-date").textContent = `${formatDate(cycle.start)} — ${formatDate(cycle.end)}`; $("#sidebar-cycle-progress").style.width = `${clamp(cycle.progress)}%`; }
   function statusLabel(status) { return ({ active: "Active", next: "Next", backlog: "Backlog", done: "Done", cancelled: "Pausado" })[status] || status; }
