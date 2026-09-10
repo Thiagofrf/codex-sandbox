@@ -317,8 +317,12 @@ a { color: inherit; }
 .study-checklist-head { margin-top: 20px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
 .study-checklist-head strong { color: var(--ink); font-size: 11px; font-family: var(--sans); }
 .study-checklist { display: grid; }
-.study-check-row { display: grid; grid-template-columns: 16px minmax(0, 1fr) auto; gap: 8px; align-items: center; min-height: 37px; border-bottom: 1px solid #f0f2f1; cursor: pointer; }
+.study-check-row { display: grid; grid-template-columns: 14px 16px minmax(0, 1fr) auto; gap: 8px; align-items: center; min-height: 37px; border-bottom: 1px solid #f0f2f1; cursor: grab; }
 .study-check-row:last-child { border-bottom: 0; }
+.study-check-row.dragging, .project-task-row.dragging { opacity: .45; }
+.study-check-row.drag-over, .project-task-row.drag-over { border-radius: 6px; outline: 1px dashed var(--green); background: var(--green-soft); }
+.checklist-drag-handle { pointer-events: none; color: var(--muted-2); font: 11px/1 var(--mono); letter-spacing: -3px; user-select: none; }
+.project-task-row .checklist-drag-handle { flex: 0 0 auto; }
 .study-check-text { min-width: 0; color: var(--ink); font-size: 10px; line-height: 1.4; }
 .study-check-text.done { color: var(--muted-2); text-decoration: line-through; }
 .study-check-row small { color: var(--muted-2); font: 8px var(--mono); }
