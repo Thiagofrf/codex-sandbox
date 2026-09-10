@@ -28,6 +28,12 @@ Os itens de checklist podem ser arrastados para alterar a prioridade; referênci
 A Agenda usa uma grade semanal de 06:00 a 24:00. Os blocos da rotina aparecem de segunda a sexta por padrão; arraste qualquer bloco para outro dia ou horário para salvar uma variação da semana.
 As mudanças de dados são normalizadas antes de salvar, e os últimos snapshots ficam disponíveis localmente para recuperação futura.
 
+## Contexto e colaboração
+
+O Personal OS começou como um MVP local para responder rapidamente a cinco perguntas: o que fazer hoje, qual é o foco atual, qual é o próximo passo, como está a semana e como evoluir sem tentar fazer tudo ao mesmo tempo.
+
+O projeto foi desenvolvido com o Codex em ciclos curtos de produto e engenharia: começamos pela estrutura vanilla e pelos dados iniciais, depois iteramos sobre agenda, checklists, ciclos, outputs, fluxo de Hoje, segurança local, tema escuro, responsividade, acessibilidade, reordenação de tarefas e correções de regressões. O Codex também foi usado para revisar estilos a partir de screenshots, diagnosticar erros de renderização, executar validações locais, organizar commits semânticos e publicar as mudanças no repositório quando solicitado.
+
 ## Próxima iteração sugerida
 
 1. Adicionar busca e filtros quando o backlog crescer.
