@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
+  <body class="steam-shell" data-layout="steam">
     <div class="app-shell">
       <aside class="sidebar" id="sidebar">
         <div class="brand-row">
@@ -42,10 +42,17 @@
       </aside>
 
       <main class="main-content">
-        <header class="topbar">
+        <header class="topbar steam-header">
           <button class="icon-button mobile-only menu-trigger" id="open-sidebar" aria-label="Open menu">☰</button>
-          <div class="breadcrumbs"><span>Steam Log</span><span class="crumb-separator">/</span><strong id="page-title">Overview</strong></div>
-          <div class="topbar-actions"><span class="currency-label">BRL · R$</span><button class="icon-button" id="theme-toggle" aria-label="Save theme preference" title="Save theme preference">☼</button><button class="avatar avatar-small" id="quick-profile" aria-label="Profile">TF</button></div>
+          <div class="steam-header-brand"><span class="steam-header-glyph">◒</span><strong>STEAM LOG</strong><span class="steam-header-tag">LIBRARY</span></div>
+          <nav class="steam-header-nav" aria-label="Steam Log sections">
+            <button class="steam-nav-link active" data-view="dashboard">Home</button>
+            <button class="steam-nav-link" data-view="backlog">Library</button>
+            <button class="steam-nav-link" data-view="wishlist">Wishlist</button>
+            <button class="steam-nav-link" data-view="played">Activity</button>
+            <button class="steam-nav-link" data-view="genres">Discover</button>
+          </nav>
+          <div class="steam-header-tools"><div class="breadcrumbs"><span>Steam Log</span><span class="crumb-separator">/</span><strong id="page-title">Overview</strong></div><span class="currency-label">BRL · R$</span><button class="icon-button" id="theme-toggle" aria-label="Save theme preference" title="Save theme preference">☼</button><button class="avatar avatar-small" id="quick-profile" aria-label="Profile">TF</button></div>
         </header>
 
         <div id="toast-region" class="toast-region" aria-live="polite"></div>
