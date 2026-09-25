@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#101a2b" />
+    <meta name="description" content="Steam Log — a focused backlog and wishlist companion." />
+    <title>Steam Log — play with intention</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" id="sidebar">
+        <div class="brand-row">
+          <a class="brand" href="#dashboard" data-view="dashboard" aria-label="Steam Log home"><span class="brand-mark">◒</span><span>steam<span class="brand-dot">/</span>log</span></a>
+          <button class="icon-button mobile-only" id="close-sidebar" aria-label="Close menu">×</button>
+        </div>
+
+        <div class="profile-card">
+          <div class="avatar">TF</div>
+          <div><strong>Thiago’s library</strong><span>Last synced 12 min ago</span></div>
+          <span class="sync-dot" title="Synced"></span>
+        </div>
+
+        <nav class="main-nav" aria-label="Main navigation">
+          <p class="nav-label">Library</p>
+          <button class="nav-item active" data-view="dashboard"><span class="nav-icon">⌂</span><span>Overview</span><span class="nav-shortcut">⌘ 1</span></button>
+          <button class="nav-item" data-view="backlog"><span class="nav-icon">▤</span><span>Backlog</span><span class="nav-count" id="nav-backlog-count">42</span></button>
+          <button class="nav-item" data-view="wishlist"><span class="nav-icon">♡</span><span>Wishlist</span><span class="nav-count accent" id="nav-wishlist-count">14</span></button>
+          <p class="nav-label nav-label-spaced">Patterns</p>
+          <button class="nav-item" data-view="played"><span class="nav-icon">◷</span><span>Recently played</span></button>
+          <button class="nav-item" data-view="genres"><span class="nav-icon">◌</span><span>Genre pulse</span></button>
+        </nav>
+
+        <div class="sidebar-bottom">
+          <div class="sync-card"><span class="eyebrow">Library health</span><strong><span id="sidebar-played-percent">36</span>% played</strong><div class="progress"><span id="sidebar-progress"></span></div><p>Keep your queue intentional.</p></div>
+          <div class="sidebar-footer"><span>local workspace</span><span class="status-dot"></span></div>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <button class="icon-button mobile-only menu-trigger" id="open-sidebar" aria-label="Open menu">☰</button>
+          <div class="breadcrumbs"><span>Steam Log</span><span class="crumb-separator">/</span><strong id="page-title">Overview</strong></div>
+          <div class="topbar-actions"><span class="currency-label">BRL · R$</span><button class="icon-button" id="theme-toggle" aria-label="Save theme preference" title="Save theme preference">☼</button><button class="avatar avatar-small" id="quick-profile" aria-label="Profile">TF</button></div>
+        </header>
+
+        <div id="toast-region" class="toast-region" aria-live="polite"></div>
+
+        <section class="view active" id="view-dashboard" data-view-panel="dashboard"></section>
+        <section class="view" id="view-backlog" data-view-panel="backlog"></section>
+        <section class="view" id="view-wishlist" data-view-panel="wishlist"></section>
+        <section class="view" id="view-played" data-view-panel="played"></section>
+        <section class="view" id="view-genres" data-view-panel="genres"></section>
+      </main>
+    </div>
+
+    <div class="modal-backdrop" id="modal-backdrop" hidden>
+      <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"></div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
