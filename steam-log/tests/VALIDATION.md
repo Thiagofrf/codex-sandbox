@@ -2,7 +2,7 @@
 
 Validation run: `npm test`
 
-Result: **46 passed, 0 failed**
+Result: **48 passed, 0 failed**
 
 | Area | Behavior validated | Test coverage | Result |
 | --- | --- | --- | --- |
@@ -45,6 +45,7 @@ Result: **46 passed, 0 failed**
 | Primary navigation priority | Wishlist is the second primary tab, while Activity is no longer exposed as a primary tab | `the primary header prioritizes Wishlist...`, `the horizontal library navigation...` | PASS |
 | Home card alignment | Backlog and Genre pulse use stretched, balanced dashboard columns | `the home browsing columns stay visually aligned` | PASS |
 | Wishlist ranking signal | Every wishlist card exposes a deterministic percentage match and no longer renders empty genre-prompt copy | `wishlist cards render a ranked match signal...` | PASS |
+| Wishlist card hierarchy | Wishlist cards stack genre and price, then place rank and percentage in a highlighted bottom badge | `wishlist cards stack genre and price...`, `wishlist card metadata reads...` | PASS |
 
 ## Validation notes
 

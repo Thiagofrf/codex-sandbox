@@ -140,6 +140,13 @@ test("wishlist game cards give genre and price distinct visual emphasis", () => 
   assert.match(app, /wish-match/);
 });
 
+test("wishlist card metadata reads as a vertical, playful ranking", () => {
+  assert.match(css, /body\.steam-shell \.wish-grid-item \.wish-meta[^}]*flex-direction: column/);
+  assert.match(css, /body\.steam-shell \.wish-match \{[^}]*position: static/);
+  assert.match(css, /body\.steam-shell \.wish-match \{[^}]*background: linear-gradient/);
+  assert.match(css, /body\.steam-shell \.wish-match \.wish-rank/);
+});
+
 test("light theme keeps the Steam header, wishlist cards, and genre rows readable", () => {
   assert.match(css, /body\.steam-shell\[data-theme="light"\] \.steam-header-brand/);
   assert.match(css, /body\.steam-shell\[data-theme="light"\] \.steam-nav-link\.active/);

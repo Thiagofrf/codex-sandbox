@@ -58,8 +58,18 @@ test("wishlist cards render a ranked match signal without empty genre copy", () 
   const app = createApp();
   const markup = wishlist(app);
   assert.match(markup, /wish-match/);
-  assert.match(markup, /% match/);
+  assert.match(markup, /<strong>\d+%<\/strong>/);
   assert.doesNotMatch(markup, /a fresh genre to explore/);
+});
+
+test("wishlist cards stack genre and price before the playful rank badge", () => {
+  const markup = wishlist(createApp());
+  const genrePosition = markup.indexOf("wish-genre");
+  const pricePosition = markup.indexOf("wish-price");
+  const matchPosition = markup.indexOf("wish-match");
+  assert.ok(genrePosition >= 0 && genrePosition < pricePosition);
+  assert.ok(pricePosition < matchPosition);
+  assert.match(markup, /wish-rank/);
 });
 
 test("add-game modal creates a library game and a wishlist game with correct fields", () => {
