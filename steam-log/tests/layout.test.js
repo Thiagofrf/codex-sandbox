@@ -71,3 +71,11 @@ test("the home wishlist snapshot has a dedicated card treatment", () => {
   assert.match(css, /body\.steam-shell \.wishlist-snapshot-item/);
   assert.match(css, /body\.steam-shell \.wishlist-snapshot-cover/);
 });
+
+test("the dashboard promotes activity history and rhythm as a first-class highlight", () => {
+  assert.match(app, /dashboard-activity-highlight/);
+  assert.match(app, /dashboard-activity-heatmap/);
+  assert.match(app, /data-view-target="played"[^>]*>View activity/);
+  assert.match(css, /body\.steam-shell \.dashboard-activity-highlight/);
+  assert.match(css, /body\.steam-shell \.dashboard-activity-heatmap/);
+});
