@@ -91,6 +91,25 @@ test("the dashboard promotes activity history and rhythm as a first-class highli
   assert.match(css, /dashboard-activity-legend/);
 });
 
+test("the home browsing columns stay visually aligned", () => {
+  assert.match(css, /body\.steam-shell \.dashboard-grid \{[^}]*align-items: stretch/);
+  assert.match(css, /body\.steam-shell \.dashboard-left \{[^}]*grid-template-rows: minmax\(0,1fr\)/);
+  assert.match(css, /body\.steam-shell \.dashboard-left \.backlog-card \{[^}]*height: 100%/);
+  assert.match(css, /body\.steam-shell \.dashboard-right \{[^}]*grid-template-rows: minmax\(0,1fr\) minmax\(0,1fr\)/);
+});
+
+test("activity graph uses an accessible styled tooltip and weekday guide", () => {
+  assert.match(app, /dashboard-activity-tooltip/);
+  assert.match(app, /pointerover/);
+  assert.match(app, /focusin/);
+  assert.doesNotMatch(app, /data-date=\"\$\{date\.toISOString\(\)\.slice\(0, 10\)\}\" title=/);
+  assert.match(app, /Mon/);
+  assert.match(app, /Wed/);
+  assert.match(app, /Fri/);
+  assert.match(css, /body\.steam-shell \.dashboard-activity-weekdays/);
+  assert.match(css, /body\.steam-shell \.dashboard-activity-tooltip/);
+});
+
 test("library browsing uses spacious rows and visible sorting controls", () => {
   assert.match(css, /body\.steam-shell \.backlog-card \.game-cover \{ width: 52px; height: 68px;/);
   assert.match(css, /body\.steam-shell \.backlog-card \.table td \{[^}]*padding-top: 20px/);
@@ -117,6 +136,8 @@ test("wishlist game cards give genre and price distinct visual emphasis", () => 
   assert.match(css, /body\.steam-shell \.wish-grid \{[^}]*grid-template-columns: repeat\(3,/);
   assert.match(css, /body\.steam-shell \.wish-grid-item \.game-cover \{ width: 74px; height: 94px/);
   assert.match(css, /body\.steam-shell \.wish-grid-item \.wish-price \{[^}]*background: transparent/);
+  assert.match(css, /body\.steam-shell \.wish-grid-item \.wish-price[^}]*font-weight: 800/);
+  assert.match(app, /wish-match/);
 });
 
 test("light theme keeps the Steam header, wishlist cards, and genre rows readable", () => {

@@ -54,6 +54,14 @@ test("wishlist sorting supports price, title, and AI ranking with an explainable
   click(app, new FakeElement("button", { "data-action": "sort-ai" })); assert.equal(app.api.getWishlistSort(), "ai"); assert.match(wishlist(app), /Ranked for you/); assert.match(wishlist(app), /logged the most time/);
 });
 
+test("wishlist cards render a ranked match signal without empty genre copy", () => {
+  const app = createApp();
+  const markup = wishlist(app);
+  assert.match(markup, /wish-match/);
+  assert.match(markup, /% match/);
+  assert.doesNotMatch(markup, /a fresh genre to explore/);
+});
+
 test("add-game modal creates a library game and a wishlist game with correct fields", () => {
   const app = createApp(); click(app, new FakeElement("button", { "data-action": "open-modal", "data-modal": "game" })); assert.equal(app.document.querySelector("#modal-backdrop").hidden, false); assert.match(app.document.querySelector("#modal").innerHTML, /Add a game/); submit(app, { title: "The Forgotten City", genre: "Adventure", price: "79.90", status: "backlog", hours: "0" }); let added = app.api.getState().games.find((item) => item.title === "The Forgotten City"); assert.ok(added); assert.equal(added.wishlist, false); assert.equal(added.price, 79.9);
   click(app, new FakeElement("button", { "data-action": "open-modal", "data-modal": "game" })); submit(app, { title: "Pacific Drive", genre: "Survival", price: "109.90", status: "wishlist", hours: "0" }); added = app.api.getState().games.find((item) => item.title === "Pacific Drive"); assert.equal(added.wishlist, true); assert.equal(added.status, "wishlist"); assert.match(wishlist(app), /Pacific Drive/);

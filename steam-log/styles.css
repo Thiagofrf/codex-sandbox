@@ -298,3 +298,24 @@ body.steam-shell .wish-grid-item .wish-price { display: inline-flex; align-items
 body.steam-shell[data-theme="light"] .wish-grid-item .wish-genre { color: #25628f; }
 body.steam-shell[data-theme="light"] .wish-grid-item .wish-price { background: #176da5; color: #fff; }
 @media (max-width:760px) { body.steam-shell .wish-grid-item .wish-meta { align-items: flex-start; flex-direction: column; gap: 6px; } }
+
+body.steam-shell .dashboard-grid { align-items: stretch; }
+body.steam-shell .dashboard-left { grid-template-rows: minmax(0,1fr); }
+body.steam-shell .dashboard-left .backlog-card { height: 100%; }
+body.steam-shell .dashboard-right { grid-template-rows: minmax(0,1fr) minmax(0,1fr); }
+body.steam-shell .dashboard-right .genre-card { min-height: 180px; }
+
+body.steam-shell .dashboard-activity-graph { display: grid; grid-template-columns: 28px minmax(0,1fr); gap: 9px; align-items: stretch; }
+body.steam-shell .dashboard-activity-weekdays { display: grid; grid-template-rows: repeat(7, minmax(13px,1fr)); align-items: center; color: #8fa8bb; font-family: var(--sans); font-size: 10px; line-height: 1; }
+body.steam-shell .dashboard-activity-tooltip { position: absolute; z-index: 5; padding: 8px 10px; border: 1px solid #46657f; border-radius: 7px; background: #0a1726; color: #edf7ff; font-family: var(--sans); font-size: 11px; font-weight: 700; white-space: nowrap; box-shadow: 0 8px 20px rgba(0,0,0,.25); pointer-events: none; }
+body.steam-shell .dashboard-activity-heatmap { position: relative; }
+body.steam-shell .dashboard-activity-heatmap .heatmap span:focus-visible { outline: 2px solid #b9e6ff; outline-offset: 2px; }
+body.steam-shell[data-theme="light"] .dashboard-activity-weekdays { color: #587286; }
+body.steam-shell[data-theme="light"] .dashboard-activity-tooltip { border-color: #8aaec7; background: #17344d; color: #f4fbff; }
+
+body.steam-shell .wish-grid-item { position: relative; }
+body.steam-shell .wish-grid-item > div:last-child { min-width: 0; padding-right: 44px; }
+body.steam-shell .wish-match { position: absolute; top: 10px; right: 12px; color: #73caff; font-family: var(--sans); font-size: 11px; font-weight: 800; letter-spacing: -.02em; white-space: nowrap; }
+body.steam-shell .wish-grid-item .wish-price { padding: 0 !important; background: transparent !important; color: #b8e8ff; font-family: var(--sans); font-size: 19px; font-weight: 800; letter-spacing: -.04em; }
+body.steam-shell[data-theme="light"] .wish-match { color: #176da5; }
+body.steam-shell[data-theme="light"] .wish-grid-item .wish-price { color: #153b58; }
