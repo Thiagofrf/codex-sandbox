@@ -251,3 +251,11 @@ body.steam-shell[data-theme="light"] .genre-large .genre-count { color: #315671;
 body.steam-shell[data-theme="light"] .genre-large .genre-bar { background: #d2e0ec; }
 @media (max-width:1100px) { body.steam-shell .dashboard-activity-highlight { grid-template-columns: minmax(220px,.75fr) minmax(0,1.25fr); } }
 @media (max-width:760px) { body.steam-shell .dashboard-activity-highlight { grid-template-columns: 1fr; min-height: 0; } body.steam-shell .dashboard-activity-heatmap { min-height: 0; padding: 18px; } body.steam-shell .dashboard-activity-heatmap .heatmap { grid-template-columns: repeat(7, minmax(18px,1fr)); gap: 6px; } body.steam-shell .dashboard-activity-heatmap .heatmap span { min-height: 26px; } }
+
+/* Make each wishlist card communicate its two buying signals at a glance. */
+body.steam-shell .wish-grid-item .wish-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-top: 8px; color: inherit; font-family: var(--sans); font-size: 12px; }
+body.steam-shell .wish-grid-item .wish-genre { color: #77bdf0; font-size: 11px; font-weight: 700; }
+body.steam-shell .wish-grid-item .wish-price { display: inline-flex; align-items: center; padding: 4px 8px; border-radius: 6px; background: #24496a; color: #fff; font-size: 16px; font-weight: 800; letter-spacing: -.03em; }
+body.steam-shell[data-theme="light"] .wish-grid-item .wish-genre { color: #25628f; }
+body.steam-shell[data-theme="light"] .wish-grid-item .wish-price { background: #176da5; color: #fff; }
+@media (max-width:760px) { body.steam-shell .wish-grid-item .wish-meta { align-items: flex-start; flex-direction: column; gap: 6px; } }

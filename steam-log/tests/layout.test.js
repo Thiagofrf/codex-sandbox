@@ -100,6 +100,14 @@ test("wishlist insights are consolidated and visually emphasized", () => {
   assert.match(css, /body\.steam-shell \.wishlist-main > \.wishlist-insights/);
 });
 
+test("wishlist game cards give genre and price distinct visual emphasis", () => {
+  assert.match(app, /wish-genre/);
+  assert.match(app, /wish-price/);
+  assert.match(css, /body\.steam-shell \.wish-grid-item \.wish-genre/);
+  assert.match(css, /body\.steam-shell \.wish-grid-item \.wish-price/);
+  assert.match(css, /body\.steam-shell \.wish-grid-item \.wish-price[^}]*font-size: 16px/);
+});
+
 test("light theme keeps the Steam header, wishlist cards, and genre rows readable", () => {
   assert.match(css, /body\.steam-shell\[data-theme="light"\] \.steam-header-brand/);
   assert.match(css, /body\.steam-shell\[data-theme="light"\] \.steam-nav-link\.active/);

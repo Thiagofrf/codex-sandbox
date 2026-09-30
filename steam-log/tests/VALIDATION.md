@@ -2,7 +2,7 @@
 
 Validation run: `npm test`
 
-Result: **41 passed, 0 failed**
+Result: **42 passed, 0 failed**
 
 | Area | Behavior validated | Test coverage | Result |
 | --- | --- | --- | --- |
@@ -37,6 +37,7 @@ Result: **41 passed, 0 failed**
 | Dashboard activity highlight | Home leads with a wide GitHub-style rhythm graph, while duplicate session panels are removed from the visible dashboard | `the dashboard promotes activity history...`, `initial load renders...` | PASS |
 | Spacious library browsing | Home and library listings use larger cover art, taller rows, wider game cells, and visible sort controls | `library browsing uses spacious rows and visible sorting controls` | PASS |
 | Consolidated wishlist insights | Wishlist price, genre, and price-band information is embedded into the primary wishlist card | `wishlist insights are consolidated and visually emphasized` | PASS |
+| Wishlist card emphasis | Each wishlist game card gives genre context and price a distinct, readable visual treatment | `wishlist game cards give genre and price distinct visual emphasis` | PASS |
 | Light-theme contrast | Steam header navigation, wishlist cards, and genre rows retain readable contrast in light mode | `light theme keeps the Steam header, wishlist cards, and genre rows readable` | PASS |
 
 ## Validation notes
