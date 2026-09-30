@@ -158,3 +158,36 @@ body.steam-shell[data-theme="light"] .table td, body.steam-shell[data-theme="lig
 body.steam-shell[data-theme="light"] .game-cell strong, body.steam-shell[data-theme="light"] .wishlist-snapshot-copy strong { color: #182b3e; }
 body.steam-shell[data-theme="light"] .wishlist-snapshot-item { border-top-color: #d8e4ec; }
 @media (max-width:760px) { body.steam-shell .wish-list, body.steam-shell .wishlist-snapshot-list { padding: 0 18px 10px; } body.steam-shell .wishlist-snapshot-item { grid-template-columns: 48px minmax(0,1fr); } body.steam-shell .wishlist-snapshot-cover { width: 48px; height: 60px; } body.steam-shell .wishlist-snapshot-price { grid-column: 2; } body.steam-shell .session { grid-template-columns: 48px 38px minmax(0,1fr); } body.steam-shell .session-hours { grid-column: 3; } }
+
+/* Dashboard activity highlight: make the play rhythm visible at a glance. */
+body.steam-shell .dashboard-activity-highlight { display: grid; grid-template-columns: minmax(190px,.72fr) minmax(360px,1.28fr) minmax(270px,.92fr); gap: 16px; align-items: stretch; margin-top: 20px; padding: 22px; overflow: hidden; border: 1px solid #31516b; border-radius: 14px; background: linear-gradient(135deg, #172c42, #102235 72%); box-shadow: 0 16px 30px rgba(0,0,0,.18); }
+body.steam-shell .dashboard-activity-copy { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding: 6px 2px; }
+body.steam-shell .dashboard-activity-copy .eyebrow { margin: 0 0 12px; color: #69c3ff; }
+body.steam-shell .dashboard-activity-copy h2 { margin: 0; color: #f6fbff; font-size: 25px; letter-spacing: -.06em; line-height: 1.05; }
+body.steam-shell .dashboard-activity-copy h2 em { color: #4eb7ff; font-style: normal; }
+body.steam-shell .dashboard-activity-copy p:not(.eyebrow) { margin: 12px 0 18px; color: #b8ccdc; font-size: 12px; line-height: 1.55; }
+body.steam-shell .dashboard-activity-copy .btn { margin-top: auto; }
+body.steam-shell .dashboard-activity-history, body.steam-shell .dashboard-activity-heatmap { min-width: 0; padding: 17px; border: 1px solid #2a4963; border-radius: 11px; background: rgba(8,23,38,.38); }
+body.steam-shell .dashboard-activity-heading, body.steam-shell .heatmap-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+body.steam-shell .dashboard-activity-heading .eyebrow { margin: 0 0 6px; color: #8aaec8; }
+body.steam-shell .dashboard-activity-heading h2 { margin: 0; color: #f2f8fd; font-size: 18px; letter-spacing: -.04em; }
+body.steam-shell .dashboard-activity-heading > span { color: #9fc7e2; font-family: var(--sans); font-size: 11px; font-weight: 700; }
+body.steam-shell .dashboard-activity-list { margin-top: 13px; }
+body.steam-shell .dashboard-activity-list .activity-item { padding: 10px 0; border-top-color: #2a435a; }
+body.steam-shell .dashboard-activity-list .activity-item:first-child { border-top: 0; }
+body.steam-shell .dashboard-activity-heatmap { display: flex; flex-direction: column; justify-content: center; }
+body.steam-shell .heatmap-heading { margin-bottom: 14px; color: #e5f2fc; font-size: 12px; font-weight: 700; }
+body.steam-shell .heatmap-heading span:last-child { color: #8eabc0; font-size: 10px; font-weight: 500; }
+body.steam-shell .dashboard-activity-heatmap .heatmap { grid-template-columns: repeat(7, minmax(18px, 1fr)); gap: 6px; }
+body.steam-shell .dashboard-activity-heatmap .heatmap span { min-height: 24px; border-radius: 5px; background: #e3ebf2; }
+body.steam-shell .dashboard-activity-heatmap .heatmap span.l1 { background: #b9cdf7; }
+body.steam-shell .dashboard-activity-heatmap .heatmap span.l2 { background: #87a7f5; }
+body.steam-shell .dashboard-activity-heatmap .heatmap span.l3 { background: #5c83ec; }
+body.steam-shell .dashboard-activity-heatmap .heatmap span.l4 { background: #1f9ff0; }
+body.steam-shell .dashboard-activity-heatmap .heatmap-labels { margin-top: 9px; color: #86a5bb; font-family: var(--sans); font-size: 10px; }
+body.steam-shell[data-theme="light"] .dashboard-activity-highlight { border-color: #c3d8e6; background: linear-gradient(135deg, #e4f2fb, #f7fbfe); box-shadow: 0 14px 28px rgba(67,111,143,.12); }
+body.steam-shell[data-theme="light"] .dashboard-activity-copy h2, body.steam-shell[data-theme="light"] .dashboard-activity-heading h2 { color: #193249; }
+body.steam-shell[data-theme="light"] .dashboard-activity-copy p:not(.eyebrow) { color: #587286; }
+body.steam-shell[data-theme="light"] .dashboard-activity-history, body.steam-shell[data-theme="light"] .dashboard-activity-heatmap { border-color: #c6dbe8; background: rgba(255,255,255,.68); }
+@media (max-width:1100px) { body.steam-shell .dashboard-activity-highlight { grid-template-columns: minmax(210px,.8fr) minmax(360px,1.2fr); } body.steam-shell .dashboard-activity-heatmap { grid-column: 1 / -1; } }
+@media (max-width:760px) { body.steam-shell .dashboard-activity-highlight { grid-template-columns: 1fr; padding: 16px; } body.steam-shell .dashboard-activity-heatmap { grid-column: auto; } body.steam-shell .dashboard-activity-copy .btn { margin-top: 0; } }

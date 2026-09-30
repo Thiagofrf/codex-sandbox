@@ -11,6 +11,7 @@ test("initial load renders the dashboard, seeded data, counts, and AI recommenda
   assert.equal(app.api.getActiveView(), "dashboard"); assert.match(dashboard(app), /Make time for/); assert.match(dashboard(app), /Wishlist snapshot/); assert.match(dashboard(app), /TUNIC/);
   assert.equal(state.games.length, 14); assert.equal(state.games.filter((item) => !item.wishlist).length, 8); assert.equal(state.games.filter((item) => item.wishlist).length, 6);
   assert.equal(app.document.querySelector("#nav-backlog-count").textContent, "6"); assert.equal(app.document.querySelector("#nav-wishlist-count").textContent, "6"); assert.match(wishlist(app), /R\$/);
+  assert.match(dashboard(app), /dashboard-activity-highlight/); assert.match(dashboard(app), /YOUR RHYTHM/);
 });
 
 test("every sidebar menu link changes the active view, title, hash, and panel", () => {

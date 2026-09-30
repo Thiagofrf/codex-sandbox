@@ -2,7 +2,7 @@
 
 Validation run: `npm test`
 
-Result: **37 passed, 0 failed**
+Result: **38 passed, 0 failed**
 
 | Area | Behavior validated | Test coverage | Result |
 | --- | --- | --- | --- |
@@ -34,6 +34,7 @@ Result: **37 passed, 0 failed**
 | Comfort typography | DM Mono is removed, text uses the sans-serif family, and dark-theme text has a stronger readable scale | `the comfort visual system avoids mono typography...` | PASS |
 | Image-led listings | Library, wishlist, home activity, and session listings render cover-image slots backed by Steam artwork | `the comfort visual system avoids mono typography...` | PASS |
 | Wishlist snapshot | Home snapshot rows use dedicated spacing, cover, title, metadata, and price treatments | `the home wishlist snapshot has a dedicated card treatment` | PASS |
+| Dashboard activity highlight | Home now promotes recent sessions, total playtime, rhythm copy, heatmap squares, and a link to Activity | `the dashboard promotes activity history...`, `initial load renders...` | PASS |
 
 ## Validation notes
 
