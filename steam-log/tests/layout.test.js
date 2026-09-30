@@ -79,3 +79,19 @@ test("the dashboard promotes activity history and rhythm as a first-class highli
   assert.match(css, /body\.steam-shell \.dashboard-activity-highlight/);
   assert.match(css, /body\.steam-shell \.dashboard-activity-heatmap/);
 });
+
+test("library browsing uses spacious rows and visible sorting controls", () => {
+  assert.match(css, /body\.steam-shell \.backlog-card \.game-cover \{ width: 52px; height: 68px;/);
+  assert.match(css, /body\.steam-shell \.backlog-card \.table td \{[^}]*padding-top: 20px/);
+  assert.match(css, /body\.steam-shell \.library-card \.game-cover \{ width: 58px; height: 74px;/);
+  assert.match(css, /body\.steam-shell \.compact-select \{[^}]*appearance: none/);
+  assert.match(css, /body\.steam-shell \.compact-select \{[^}]*padding-right: 34px/);
+});
+
+test("wishlist insights are consolidated and visually emphasized", () => {
+  assert.match(app, /wishlist-insights/);
+  assert.match(css, /body\.steam-shell \.wishlist-insights/);
+  assert.match(css, /body\.steam-shell \.wishlist-insights-price/);
+  assert.match(css, /body\.steam-shell \.wishlist-insights-genre/);
+  assert.match(css, /body\.steam-shell \.wishlist-side \{ display: none; \}/);
+});

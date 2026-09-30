@@ -191,3 +191,33 @@ body.steam-shell[data-theme="light"] .dashboard-activity-copy p:not(.eyebrow) { 
 body.steam-shell[data-theme="light"] .dashboard-activity-history, body.steam-shell[data-theme="light"] .dashboard-activity-heatmap { border-color: #c6dbe8; background: rgba(255,255,255,.68); }
 @media (max-width:1100px) { body.steam-shell .dashboard-activity-highlight { grid-template-columns: minmax(210px,.8fr) minmax(360px,1.2fr); } body.steam-shell .dashboard-activity-heatmap { grid-column: 1 / -1; } }
 @media (max-width:760px) { body.steam-shell .dashboard-activity-highlight { grid-template-columns: 1fr; padding: 16px; } body.steam-shell .dashboard-activity-heatmap { grid-column: auto; } body.steam-shell .dashboard-activity-copy .btn { margin-top: 0; } }
+
+/* Spacious browsing and consolidated wishlist insights. */
+body.steam-shell .backlog-card .game-cover { width: 52px; height: 68px; border-radius: 9px; }
+body.steam-shell .backlog-card .table td { padding-top: 20px; padding-bottom: 20px; }
+body.steam-shell .library-card .game-cover { width: 58px; height: 74px; border-radius: 10px; }
+body.steam-shell .library-card .game-cell { gap: 16px; min-width: 270px; }
+body.steam-shell .library-card .full-table td { padding-top: 20px; padding-bottom: 20px; }
+body.steam-shell .compact-select { appearance: none; padding-right: 34px; background-image: linear-gradient(45deg, transparent 50%, #9fc1d8 50%), linear-gradient(135deg, #9fc1d8 50%, transparent 50%); background-position: calc(100% - 16px) 13px, calc(100% - 11px) 13px; background-size: 5px 5px, 5px 5px; background-repeat: no-repeat; }
+body.steam-shell .dashboard-activity-highlight { width: 100%; margin-top: 0; margin-bottom: 24px; }
+body.steam-shell .wishlist-side { display: none; }
+body.steam-shell .wishlist-layout { display: block; }
+body.steam-shell .wishlist-intro { margin-bottom: 18px; }
+body.steam-shell .wishlist-summary-row { gap: 42px; }
+body.steam-shell .wishlist-summary-row strong { font-size: 27px; }
+body.steam-shell .wishlist-summary-row span { color: #d1d9f2; font-family: var(--sans); font-size: 11px; }
+body.steam-shell .wishlist-insights { display: grid; grid-template-columns: minmax(0,1.15fr) minmax(0,.85fr); gap: 16px; margin-top: 18px; padding: 23px; border: 1px solid #3b507e; border-radius: 12px; background: linear-gradient(135deg, #232952, #18263d); box-shadow: 0 12px 24px rgba(0,0,0,.16); }
+body.steam-shell .wishlist-insights-price, body.steam-shell .wishlist-insights-genre { min-width: 0; padding: 4px 7px; }
+body.steam-shell .wishlist-insights .eyebrow { margin: 0 0 10px; color: #b9b2ff; }
+body.steam-shell .wishlist-insights-price strong, body.steam-shell .wishlist-insights-genre strong { display: block; color: #f7f9ff; font-size: 29px; letter-spacing: -.06em; }
+body.steam-shell .wishlist-insights-price > span:not(.eyebrow) { display: block; margin-top: 4px; color: #c2cbe4; font-family: var(--sans); font-size: 12px; }
+body.steam-shell .wishlist-insights-breakdown { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+body.steam-shell .wishlist-insights-breakdown span { display: flex; gap: 8px; align-items: center; padding: 8px 10px; border: 1px solid rgba(194,190,255,.23); border-radius: 8px; color: #c8d2ed; font-family: var(--sans); font-size: 11px; }
+body.steam-shell .wishlist-insights-breakdown b { color: #fff; font-size: 14px; }
+body.steam-shell .wishlist-insights-genre { padding-left: 22px; border-left: 1px solid rgba(202,201,255,.18); }
+body.steam-shell .wishlist-insights-genre strong { color: #72c9ff; }
+body.steam-shell .wishlist-insights-genre p { margin: 10px 0 17px; color: #c0cbe0; font-family: var(--sans); font-size: 12px; line-height: 1.55; }
+body.steam-shell[data-theme="light"] .wishlist-insights { border-color: #c9c3f0; background: linear-gradient(135deg, #f0edff, #edf7ff); }
+body.steam-shell[data-theme="light"] .wishlist-insights-price strong, body.steam-shell[data-theme="light"] .wishlist-insights-genre strong { color: #263452; }
+body.steam-shell[data-theme="light"] .wishlist-insights-price > span:not(.eyebrow), body.steam-shell[data-theme="light"] .wishlist-insights-breakdown span, body.steam-shell[data-theme="light"] .wishlist-insights-genre p { color: #5d6c85; }
+@media (max-width:760px) { body.steam-shell .wishlist-insights { grid-template-columns: 1fr; } body.steam-shell .wishlist-insights-genre { padding: 18px 7px 4px; border-top: 1px solid rgba(202,201,255,.18); border-left: 0; } body.steam-shell .backlog-card .game-cover { width: 48px; height: 62px; } }

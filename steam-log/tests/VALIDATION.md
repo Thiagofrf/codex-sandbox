@@ -2,7 +2,7 @@
 
 Validation run: `npm test`
 
-Result: **38 passed, 0 failed**
+Result: **40 passed, 0 failed**
 
 | Area | Behavior validated | Test coverage | Result |
 | --- | --- | --- | --- |
@@ -35,6 +35,8 @@ Result: **38 passed, 0 failed**
 | Image-led listings | Library, wishlist, home activity, and session listings render cover-image slots backed by Steam artwork | `the comfort visual system avoids mono typography...` | PASS |
 | Wishlist snapshot | Home snapshot rows use dedicated spacing, cover, title, metadata, and price treatments | `the home wishlist snapshot has a dedicated card treatment` | PASS |
 | Dashboard activity highlight | Home now promotes recent sessions, total playtime, rhythm copy, heatmap squares, and a link to Activity | `the dashboard promotes activity history...`, `initial load renders...` | PASS |
+| Spacious library browsing | Home and library listings use larger cover art, taller rows, wider game cells, and visible sort controls | `library browsing uses spacious rows and visible sorting controls` | PASS |
+| Consolidated wishlist insights | Wishlist price, genre, and price-band information is emphasized in one consolidated insights card | `wishlist insights are consolidated and visually emphasized` | PASS |
 
 ## Validation notes
 
