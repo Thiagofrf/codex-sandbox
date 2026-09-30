@@ -10,7 +10,7 @@
   const dateLabel = (value) => new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric" }).format(new Date(`${value}T12:00:00`));
 
   const defaultState = {
-    theme: "light",
+    theme: "dark",
     games: [
       { id: "sable", title: "Sable", genre: "Adventure", status: "backlog", hours: 0, lastPlayed: "—", cover: "sable", price: 89.99, wishlist: false },
       { id: "hades", title: "Hades", genre: "Action roguelike", status: "in-progress", hours: 21, lastPlayed: "2026-09-22", cover: "hades", price: 73.99, wishlist: false },

@@ -19,7 +19,7 @@ Open `index.html` directly in a browser. The page ships with sample data so the 
 Run the dependency-free interaction suite with:
 
 ```text
-node --test tests/app.test.js
+node --test tests/app.test.js tests/layout.test.js
 ```
 
-The tests execute the real `app.js` against a small browser/DOM harness and cover navigation, loaded content, search, filters, sorting, played state changes, modals, sessions, wishlist ranking, keyboard shortcuts, responsive menu controls, themes, hash routing, and localStorage persistence.
+The tests execute the real `app.js` against a small browser/DOM harness and cover navigation, loaded content, search, filters, sorting, played state changes, modals, sessions, wishlist ranking, keyboard shortcuts, responsive menu controls, themes, hash routing, and localStorage persistence. The layout suite checks the Steam-style shell, horizontal navigation, shelf framing, visual tokens, and responsive rules.

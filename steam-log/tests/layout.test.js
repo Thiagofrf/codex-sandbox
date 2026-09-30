@@ -25,6 +25,8 @@ test("the horizontal library navigation exposes every primary view", () => {
 test("Steam visual tokens and responsive layout rules exist", () => {
   assert.match(css, /--steam-blue:/);
   assert.match(css, /--steam-deep:/);
+  assert.match(css, /body\.steam-shell\[data-theme="light"\]/);
+  assert.match(css, /body\.steam-shell\[data-theme="dark"\]/);
   assert.match(css, /\.steam-shell/);
   assert.match(css, /\.steam-header-nav/);
   assert.match(css, /\.shelf-grid/);
