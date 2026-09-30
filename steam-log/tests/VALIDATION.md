@@ -1,8 +1,8 @@
 # Steam Log validation map
 
-Validation run: `node --test tests/app.test.js`
+Validation run: `node --test tests/app.test.js tests/layout.test.js`
 
-Result: **15 passed, 0 failed**
+Result: **18 passed, 0 failed**
 
 | Area | Behavior validated | Test coverage | Result |
 | --- | --- | --- | --- |
@@ -22,6 +22,10 @@ Result: **15 passed, 0 failed**
 | Theme | Theme toggle updates the document and persists the preference | `theme toggle updates...` | PASS |
 | Persistence | State survives a fresh app load through localStorage | `state survives...` | PASS |
 | Deep links | `#wishlist` opens Wishlist on initial load | `deep-link hash...` | PASS |
+| Layout shell | Steam-style body shell, top header, horizontal navigation, and shelf classes are present | `the page declares...` | PASS |
+| Layout navigation | All five primary views are exposed in the horizontal header navigation | `horizontal library navigation...` | PASS |
+| Layout styling | Steam tokens, shell rules, shelf rules, and responsive rules are present | `Steam visual tokens...` | PASS |
+| Layout hierarchy | Desktop hides the admin-style sidebar in favor of a full-width top navigation; sidebar remains available as a mobile drawer | `Steam visual tokens...` | PASS |
 
 ## Validation notes
 

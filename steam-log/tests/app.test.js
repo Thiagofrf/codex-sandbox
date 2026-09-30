@@ -63,7 +63,7 @@ test("keyboard shortcuts navigate to all views", () => {
 });
 
 test("theme toggle updates the document and persists the preference", () => {
-  const app = createApp(); assert.equal(app.document.body.dataset.theme, "light"); app.document.querySelector("#theme-toggle").dispatchEvent(event("click", app.document.querySelector("#theme-toggle"))); assert.equal(app.document.body.dataset.theme, "dark"); const saved = JSON.parse(app.storage.getItem("steam-log-state-v1")); assert.equal(saved.theme, "dark"); app.document.querySelector("#theme-toggle").dispatchEvent(event("click", app.document.querySelector("#theme-toggle"))); assert.equal(app.document.body.dataset.theme, "light");
+  const app = createApp(); assert.equal(app.document.body.dataset.theme, "dark"); app.document.querySelector("#theme-toggle").dispatchEvent(event("click", app.document.querySelector("#theme-toggle"))); assert.equal(app.document.body.dataset.theme, "light"); const saved = JSON.parse(app.storage.getItem("steam-log-state-v1")); assert.equal(saved.theme, "light"); app.document.querySelector("#theme-toggle").dispatchEvent(event("click", app.document.querySelector("#theme-toggle"))); assert.equal(app.document.body.dataset.theme, "dark");
 });
 
 test("state survives a fresh app load through localStorage", () => {
