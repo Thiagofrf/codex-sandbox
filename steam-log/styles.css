@@ -235,6 +235,23 @@ body.steam-shell .dashboard-activity-highlight { min-height: 210px; }
 body.steam-shell .dashboard-activity-heatmap { min-height: 190px; }
 body.steam-shell .dashboard-activity-heatmap .heatmap { grid-template-columns: repeat(52, minmax(5px,1fr)); grid-template-rows: repeat(7, minmax(13px,1fr)); gap: 4px; }
 body.steam-shell .dashboard-activity-heatmap .heatmap span { min-height: 13px; border-radius: 3px; }
+body.steam-shell .dashboard-activity-heatmap .heatmap { grid-auto-flow: column; }
+body.steam-shell .dashboard-activity-legend { display: flex; align-items: center; justify-content: flex-end; gap: 4px; margin-top: 12px; color: #8fa8bb; font-size: 10px; }
+body.steam-shell .dashboard-activity-legend i { width: 12px; height: 12px; border-radius: 3px; background: #dfe8f0; }
+body.steam-shell .dashboard-activity-legend i.l1 { background: #b9cdf7; }
+body.steam-shell .dashboard-activity-legend i.l2 { background: #87a7f5; }
+body.steam-shell .dashboard-activity-legend i.l3 { background: #5c83ec; }
+body.steam-shell .dashboard-activity-legend i.l4 { background: #1f9ff0; }
+body.steam-shell .dashboard-session-history { margin-top: 18px; }
+body.steam-shell .wish-grid { grid-template-columns: repeat(3, minmax(0,1fr)); gap: 12px; padding: 18px; }
+body.steam-shell .wish-grid-item { min-height: 120px; grid-template-columns: 74px minmax(0,1fr); gap: 12px; padding: 12px; }
+body.steam-shell .wish-grid-item .game-cover { width: 74px; height: 94px; }
+body.steam-shell .wish-grid-item .wish-genre { display: inline-flex; padding: 4px 7px; border-radius: 5px; background: #24496a; color: #c9eaff; }
+body.steam-shell .wish-grid-item .wish-price { background: transparent; color: #9fe0ff; font-weight: 800; }
+body.steam-shell .wish-grid-item .wish-reason { color: #8fa8bb; }
+body.steam-shell[data-theme="light"] .wish-grid-item .wish-genre { background: #dbeeff; color: #20567e; }
+body.steam-shell[data-theme="light"] .wish-grid-item .wish-price { background: transparent; color: #126ca1; }
+body.steam-shell[data-theme="light"] .wish-grid-item .wish-reason { color: #61788d; }
 body.steam-shell .wishlist-layout { padding: 0; border: 1px solid #3b507e; border-radius: 12px; overflow: hidden; background: linear-gradient(135deg, #232952, #18263d); box-shadow: 0 12px 24px rgba(0,0,0,.16); }
 body.steam-shell .wishlist-main { border: 0; border-radius: 0; background: transparent; box-shadow: none; }
 body.steam-shell .wishlist-main > .wishlist-insights, body.steam-shell .wishlist-layout > .wishlist-insights { margin: 0; border: 0; border-top: 1px solid rgba(202,201,255,.2); border-radius: 0; background: transparent; box-shadow: none; }
@@ -272,7 +289,7 @@ body.steam-shell[data-theme="light"] .genre-large .genre-name { color: #1b405d; 
 body.steam-shell[data-theme="light"] .genre-large .genre-count { color: #315671; font-weight: 700; }
 body.steam-shell[data-theme="light"] .genre-large .genre-bar { background: #d2e0ec; }
 @media (max-width:1100px) { body.steam-shell .dashboard-activity-highlight { grid-template-columns: minmax(220px,.75fr) minmax(0,1.25fr); } }
-@media (max-width:760px) { body.steam-shell .dashboard-activity-highlight { grid-template-columns: 1fr; min-height: 0; } body.steam-shell .dashboard-activity-heatmap { min-height: 0; padding: 18px; overflow-x: auto; } body.steam-shell .dashboard-activity-heatmap .heatmap { min-width: 620px; grid-template-columns: repeat(52, minmax(8px,1fr)); gap: 4px; } body.steam-shell .dashboard-activity-heatmap .heatmap span { min-height: 12px; } body.steam-shell .wish-grid-item { grid-template-columns: 78px minmax(0,1fr); min-height: 122px; } body.steam-shell .wish-grid-item .game-cover { width: 78px; height: 96px; } }
+@media (max-width:760px) { body.steam-shell .dashboard-activity-highlight { grid-template-columns: 1fr; min-height: 0; } body.steam-shell .dashboard-activity-heatmap { min-height: 0; padding: 18px; overflow-x: auto; } body.steam-shell .dashboard-activity-heatmap .heatmap { min-width: 620px; grid-template-columns: repeat(52, minmax(8px,1fr)); gap: 4px; } body.steam-shell .dashboard-activity-heatmap .heatmap span { min-height: 12px; } body.steam-shell .wish-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } body.steam-shell .wish-grid-item { grid-template-columns: 64px minmax(0,1fr); min-height: 110px; } body.steam-shell .wish-grid-item .game-cover { width: 64px; height: 82px; } }
 
 /* Make each wishlist card communicate its two buying signals at a glance. */
 body.steam-shell .wish-grid-item .wish-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-top: 8px; color: inherit; font-family: var(--sans); font-size: 12px; }

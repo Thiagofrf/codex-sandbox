@@ -43,7 +43,8 @@ class FakeDocument extends FakeElement {
     this.registry.get("modal-backdrop").tagName = "DIV";
     this.views = ["dashboard", "backlog", "wishlist", "played", "genres"].map((view) => { const element = new FakeElement("section", { id: `view-${view}` }); element.dataset.viewPanel = view; element.classList.add("view"); this.register(element); return element; });
     this.filterElements = ["all", "backlog", "in-progress", "played"].map((filter) => new FakeElement("button", { className: "filter-pill", "data-filter": filter }));
-    this.navItems = ["dashboard", "backlog", "wishlist", "played", "genres"].map((view) => { const element = new FakeElement("button", { className: "nav-item", "data-view": view }); this.register(element); return element; });
+    this.navItems = ["dashboard", "wishlist", "backlog", "genres"].map((view) => { const element = new FakeElement("button", { className: "nav-item", "data-view": view }); this.register(element); return element; });
+    this.steamNavItems = ["dashboard", "wishlist", "backlog", "genres"].map((view) => new FakeElement("button", { className: "steam-nav-link", "data-view": view }));
   }
   register(element) { if (element.id) this.registry.set(element.id, element); return element; }
   createElement(tagName) { return new FakeElement(tagName); }
@@ -57,6 +58,7 @@ class FakeDocument extends FakeElement {
   }
   querySelectorAll(selector) {
     if (selector === ".nav-item") return this.navItems;
+    if (selector === ".steam-nav-link") return this.steamNavItems;
     if (selector === ".view") return this.views;
     if (selector === "[data-view-panel]") return this.views;
     if (selector === "[data-filter]") return this.filterElements;

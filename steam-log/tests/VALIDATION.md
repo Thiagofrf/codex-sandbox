@@ -2,7 +2,7 @@
 
 Validation run: `npm test`
 
-Result: **42 passed, 0 failed**
+Result: **43 passed, 0 failed**
 
 | Area | Behavior validated | Test coverage | Result |
 | --- | --- | --- | --- |
@@ -35,11 +35,14 @@ Result: **42 passed, 0 failed**
 | Image-led listings | Library, wishlist, home activity, and session listings render cover-image slots backed by Steam artwork | `the comfort visual system avoids mono typography...` | PASS |
 | Wishlist snapshot | Home snapshot rows use dedicated spacing, cover, title, metadata, and price treatments | `the home wishlist snapshot has a dedicated card treatment` | PASS |
 | Dashboard activity highlight | Home leads with a wide 52-week GitHub-style rhythm graph, with the AI playlist and duplicate session panels removed | `the dashboard promotes activity history...`, `initial load renders...` | PASS |
+| Activity graph detail | Daily squares expose hours and dates on hover and include a Less→More color legend | `the dashboard promotes activity history...` | PASS |
+| Home session history | Session history is available on Home after Activity leaves the primary navigation | `initial load renders...`, `the primary header prioritizes Wishlist...` | PASS |
 | Spacious library browsing | Home and library listings use larger cover art, taller rows, wider game cells, and visible sort controls | `library browsing uses spacious rows and visible sorting controls` | PASS |
 | Consolidated wishlist insights | Wishlist price, genre, and price-band information is embedded into the primary wishlist card | `wishlist insights are consolidated and visually emphasized` | PASS |
 | Wishlist card emphasis | Each wishlist game card gives genre context and price a distinct, readable visual treatment | `wishlist game cards give genre and price distinct visual emphasis` | PASS |
 | Light-theme contrast | Steam header navigation, wishlist cards, and genre rows retain readable contrast in light mode | `light theme keeps the Steam header, wishlist cards, and genre rows readable` | PASS |
 | Wishlist card composition | Wishlist ranking and value insights render within one consolidated card container | `initial load renders...`, `wishlist insights are consolidated...` | PASS |
+| Primary navigation priority | Wishlist is the second primary tab, while Activity is no longer exposed as a primary tab | `the primary header prioritizes Wishlist...`, `the horizontal library navigation...` | PASS |
 
 ## Validation notes
 

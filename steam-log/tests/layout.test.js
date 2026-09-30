@@ -17,9 +17,10 @@ test("the page declares the Steam-style shell and shelf layout contract", () => 
 });
 
 test("the horizontal library navigation exposes every primary view", () => {
-  for (const view of ["dashboard", "backlog", "wishlist", "played", "genres"]) {
+  for (const view of ["dashboard", "wishlist", "backlog", "genres"]) {
     assert.match(html, new RegExp(`class="steam-nav-link[^"]*"[^>]*data-view="${view}"`));
   }
+  assert.doesNotMatch(html, /class="steam-nav-link[^"]*"[^>]*data-view="played"/);
 });
 
 test("Steam visual tokens and responsive layout rules exist", () => {
@@ -83,6 +84,11 @@ test("the dashboard promotes activity history and rhythm as a first-class highli
   assert.match(css, /body\.steam-shell \.dashboard-grid \.activity-card \{ display: none; \}/);
   assert.match(app, /Array\.from\(\{ length: 364 \}/);
   assert.match(css, /dashboard-activity-heatmap \.heatmap \{ grid-template-columns: repeat\(52,/);
+  assert.match(app, /data-hours="/);
+  assert.match(app, /data-date="/);
+  assert.match(app, /Less/);
+  assert.match(app, /More/);
+  assert.match(css, /dashboard-activity-legend/);
 });
 
 test("library browsing uses spacious rows and visible sorting controls", () => {
@@ -108,6 +114,9 @@ test("wishlist game cards give genre and price distinct visual emphasis", () => 
   assert.match(css, /body\.steam-shell \.wish-grid-item \.wish-genre/);
   assert.match(css, /body\.steam-shell \.wish-grid-item \.wish-price/);
   assert.match(css, /body\.steam-shell \.wish-grid-item \.wish-price[^}]*font-size: 16px/);
+  assert.match(css, /body\.steam-shell \.wish-grid \{[^}]*grid-template-columns: repeat\(3,/);
+  assert.match(css, /body\.steam-shell \.wish-grid-item \.game-cover \{ width: 74px; height: 94px/);
+  assert.match(css, /body\.steam-shell \.wish-grid-item \.wish-price \{[^}]*background: transparent/);
 });
 
 test("light theme keeps the Steam header, wishlist cards, and genre rows readable", () => {

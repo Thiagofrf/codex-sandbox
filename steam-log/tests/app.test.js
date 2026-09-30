@@ -14,15 +14,25 @@ test("initial load renders the dashboard, seeded data, counts, and AI recommenda
   assert.match(dashboard(app), /dashboard-activity-highlight/); assert.match(dashboard(app), /YOUR RHYTHM/); assert.ok(dashboard(app).indexOf("dashboard-activity-highlight") < dashboard(app).indexOf("hero hero-shelf"));
   assert.doesNotMatch(dashboard(app), /class="ai-hero"/);
   const wishlistMarkup = wishlist(app); assert.doesNotMatch(wishlistMarkup, /wishlist-side/); assert.equal((wishlistMarkup.match(/class="wishlist-insights"/g) || []).length, 1);
+  assert.doesNotMatch(dashboard(app), /class="ai-hero"/);
+  assert.match(dashboard(app), /dashboard-session-history/);
+});
+
+test("the primary header prioritizes Wishlist and keeps session history on Home", () => {
+  const app = createApp();
+  const links = app.document.querySelectorAll(".steam-nav-link");
+  assert.deepEqual(links.map((item) => item.dataset.view), ["dashboard", "wishlist", "backlog", "genres"]);
+  assert.doesNotMatch(dashboard(app), /data-view="played"/);
+  assert.match(dashboard(app), /dashboard-session-history/);
 });
 
 test("every sidebar menu link changes the active view, title, hash, and panel", () => {
-  const app = createApp(); const expected = { dashboard: "Overview", backlog: "Backlog", wishlist: "Wishlist", played: "Recently played", genres: "Genre pulse" };
+  const app = createApp(); const expected = { dashboard: "Overview", wishlist: "Wishlist", backlog: "Backlog", genres: "Genre pulse" };
   for (const [view, title] of Object.entries(expected)) { click(app, app.document.navItems.find((item) => item.dataset.view === view)); assert.equal(app.api.getActiveView(), view); assert.equal(app.window.location.hash, view); assert.equal(app.document.querySelector("#page-title").textContent, title); assert.ok(app.document.querySelector(`#view-${view}`).classList.contains("active")); }
 });
 
-test("cross-view links from dashboard route to backlog, wishlist, played, and genres", () => {
-  const app = createApp(); for (const view of ["backlog", "wishlist", "played", "genres"]) { click(app, new FakeElement("button", { "data-view-target": view })); assert.equal(app.api.getActiveView(), view); }
+test("cross-view links from dashboard route to backlog, wishlist, and genres", () => {
+  const app = createApp(); for (const view of ["backlog", "wishlist", "genres"]) { click(app, new FakeElement("button", { "data-view-target": view })); assert.equal(app.api.getActiveView(), view); }
 });
 
 test("backlog search filters loaded games and backlog status filters show the correct subset", () => {
@@ -62,7 +72,7 @@ test("mobile sidebar opens and closes through both controls", () => {
 });
 
 test("keyboard shortcuts navigate to all views", () => {
-  const app = createApp(); for (const [key, view] of [["1", "dashboard"], ["2", "backlog"], ["3", "wishlist"], ["4", "played"], ["5", "genres"]]) { app.document.dispatchEvent(event("keydown", app.document, { key, ctrlKey: true })); assert.equal(app.api.getActiveView(), view); }
+  const app = createApp(); for (const [key, view] of [["1", "dashboard"], ["2", "wishlist"], ["3", "backlog"], ["4", "genres"]]) { app.document.dispatchEvent(event("keydown", app.document, { key, ctrlKey: true })); assert.equal(app.api.getActiveView(), view); }
 });
 
 test("theme toggle updates the document and persists the preference", () => {
