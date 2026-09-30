@@ -34,3 +34,20 @@ test("Steam visual tokens and responsive layout rules exist", () => {
   assert.match(css, /body\.steam-shell \.main-content \{ width: 100%; \}/);
   assert.match(css, /@media \(max-width:760px\)/);
 });
+
+test("the library table keeps readable alignment and game-first sizing", () => {
+  assert.match(css, /body\.steam-shell \.full-table thead/);
+  assert.match(css, /body\.steam-shell \.full-table th \{ padding:/);
+  assert.match(css, /body\.steam-shell \.full-table th:first-child/);
+  assert.match(css, /body\.steam-shell \.full-table td:first-child/);
+  assert.match(css, /body\.steam-shell \.full-table \.game-cover \{ width: 48px; height: 60px;/);
+  assert.match(css, /body\.steam-shell \.full-table \.game-cell strong \{[^}]*font-family: var\(--sans\)/);
+  assert.match(css, /body\.steam-shell \.wish-grid-item \.game-cover \{ width: 64px; height: 78px;/);
+});
+
+test("the logo context is visually distinct from the clickable section navigation", () => {
+  assert.match(html, /<span class="steam-header-context">YOUR GAME SPACE<\/span>/);
+  assert.doesNotMatch(html, /steam-header-tag/);
+  assert.match(css, /\.steam-header-context \{[^}]*border:/);
+  assert.match(css, /\.steam-header-context \{[^}]*text-transform: uppercase/);
+});

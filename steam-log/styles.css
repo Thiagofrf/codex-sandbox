@@ -93,3 +93,31 @@ body.steam-shell .wishlist-intro { border-radius: 7px; background: linear-gradie
 .react-sync-connected { color: #b9d5e9; font: 8px var(--mono); white-space: nowrap; }.react-sync-dot { width: 6px; height: 6px; border-radius: 50%; background: #2eb78b; box-shadow: 0 0 0 3px rgba(46,183,139,.14); }.react-sync-connected button { height: 22px; padding: 0 6px; background: transparent; border-color: #35546d; color: #9bb2c8; }
 body.steam-shell[data-theme="light"] .react-sync-label { color: #60788d; } body.steam-shell[data-theme="light"] .react-sync input { background: #f5f8fb; border-color: #cbd9e5; color: #1a2a3b; }.steam-shell[data-theme="light"] .react-sync-connected { color: #49657d; }
 @media (max-width:760px) { #react-sync-root { order: 2; width: 100%; }.react-sync { width: 100%; }.react-sync input { flex: 1; width: auto; } }
+
+/* Visual refresh: readable type, aligned table gutters, and cover-first game cards. */
+.steam-header-context { display: inline-flex; align-items: center; min-height: 22px; padding: 0 8px; border: 1px solid #2d4961; border-radius: 999px; color: #82a2bc; font: 8px var(--mono); letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; }
+body.steam-shell[data-theme="light"] .steam-header-context { border-color: #bfd2e0; color: #5f7b91; }
+body.steam-shell .full-table { min-width: 780px; }
+body.steam-shell .full-table thead { background: rgba(12, 27, 43, .42); }
+body.steam-shell .full-table th { padding: 13px 16px 12px; color: #7fa2bd; font-size: 9px; letter-spacing: .13em; }
+body.steam-shell .full-table th:first-child, body.steam-shell .full-table td:first-child { padding-left: 28px; }
+body.steam-shell .full-table th:last-child, body.steam-shell .full-table td:last-child { padding-right: 28px; }
+body.steam-shell .full-table td { padding-top: 17px; padding-bottom: 17px; font-family: var(--sans); font-size: 10px; }
+body.steam-shell .full-table .game-cell { gap: 14px; min-width: 245px; }
+body.steam-shell .full-table .game-cover { width: 48px; height: 60px; border-radius: 8px; font-size: 8px; box-shadow: 0 7px 15px rgba(0,0,0,.18); }
+body.steam-shell .full-table .game-cell strong { color: #f3f8fd; font-family: var(--sans); font-size: 12px; font-weight: 700; letter-spacing: -.025em; }
+body.steam-shell .full-table .game-cell span { margin-top: 5px; color: #9cb2c6; font-family: var(--sans); font-size: 10px; }
+body.steam-shell .full-table .pill { min-height: 24px; padding: 0 10px; font-size: 9px; }
+body.steam-shell .wish-grid { gap: 14px; padding: 25px; }
+body.steam-shell .wish-grid-item { min-height: 108px; grid-template-columns: 64px minmax(0,1fr); gap: 14px; padding: 14px; border-radius: 12px; }
+body.steam-shell .wish-grid-item .game-cover { width: 64px; height: 78px; border-radius: 9px; font-size: 8px; box-shadow: 0 7px 15px rgba(0,0,0,.18); }
+body.steam-shell .wish-grid-item strong { font-family: var(--sans); font-size: 12px; font-weight: 700; letter-spacing: -.025em; line-height: 1.25; }
+body.steam-shell .wish-grid-item .wish-meta { font-family: var(--sans); font-size: 10px; }
+body.steam-shell .wish-grid-item .wish-reason { font-size: 9px; line-height: 1.45; }
+body.steam-shell .wish-list .wish-cover { width: 43px; height: 54px; border-radius: 8px; }
+body.steam-shell .wish-copy strong, body.steam-shell .activity-copy strong, body.steam-shell .session-copy strong { font-family: var(--sans); font-size: 11px; letter-spacing: -.02em; }
+body.steam-shell .wish-copy span, body.steam-shell .activity-copy span, body.steam-shell .session-copy span { font-family: var(--sans); font-size: 9px; }
+body.steam-shell[data-theme="light"] .full-table thead { background: #f1f6fa; }
+body.steam-shell[data-theme="light"] .full-table .game-cell strong { color: #1a2a3b; }
+body.steam-shell[data-theme="light"] .full-table .game-cell span { color: #64778b; }
+@media (max-width:760px) { .steam-header-context { display: none; } body.steam-shell .full-table { min-width: 780px; } body.steam-shell .full-table th:first-child, body.steam-shell .full-table td:first-child { padding-left: 20px; } body.steam-shell .full-table th:last-child, body.steam-shell .full-table td:last-child { padding-right: 20px; } body.steam-shell .wish-grid { padding: 18px; } }
