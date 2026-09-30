@@ -2,7 +2,7 @@
 
 Validation run: `npm test`
 
-Result: **35 passed, 0 failed**
+Result: **37 passed, 0 failed**
 
 | Area | Behavior validated | Test coverage | Result |
 | --- | --- | --- | --- |
@@ -31,6 +31,9 @@ Result: **35 passed, 0 failed**
 | Game-data utilities | Hours formatting, library stats, filtering, wishlist totals, and genre-affinity ranking are deterministic | `gameData.test.mjs` | PASS |
 | Library visual refresh | Table gutters, header treatment, readable sans-serif metadata, and larger cover-first cards are declared | `the library table keeps readable alignment...` | PASS |
 | Header clarity | The game-space context is distinct from clickable section navigation | `the logo context is visually distinct...` | PASS |
+| Comfort typography | DM Mono is removed, text uses the sans-serif family, and dark-theme text has a stronger readable scale | `the comfort visual system avoids mono typography...` | PASS |
+| Image-led listings | Library, wishlist, home activity, and session listings render cover-image slots backed by Steam artwork | `the comfort visual system avoids mono typography...` | PASS |
+| Wishlist snapshot | Home snapshot rows use dedicated spacing, cover, title, metadata, and price treatments | `the home wishlist snapshot has a dedicated card treatment` | PASS |
 
 ## Validation notes
 

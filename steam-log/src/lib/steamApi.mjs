@@ -32,7 +32,7 @@ export class SteamApiClient {
       title: item.name,
       hours: Math.round(((item.playtime_forever || 0) / 60) * 100) / 100,
       playtimeMinutes: item.playtime_forever || 0,
-      coverUrl: item.img_icon_url ? `https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/apps/${item.appid}/${item.img_icon_url}.jpg` : "",
+      coverUrl: item.appid ? `https://cdn.cloudflare.steamstatic.com/steam/apps/${item.appid}/library_600x900_2x.jpg` : "",
     }));
     return { ...data, gameCount: data.game_count ?? games.length, games };
   }
