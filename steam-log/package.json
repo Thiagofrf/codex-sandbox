@@ -2,7 +2,23 @@
   "name": "steam-log",
   "private": true,
   "type": "commonjs",
+  "dependencies": {
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.0.4",
+    "@testing-library/jest-dom": "^6.8.0",
+    "@testing-library/react": "^16.3.0",
+    "jsdom": "^26.1.0",
+    "vite": "^7.1.7",
+    "vitest": "^3.2.4"
+  },
   "scripts": {
-    "test": "node --test tests/app.test.js tests/layout.test.js"
+    "dev": "vite",
+    "dev:api": "node --env-file=.env server/steamProxy.mjs",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "node --test tests/app.test.js tests/layout.test.js tests/react-foundation.test.js && vitest run"
   }
 }
