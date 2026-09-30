@@ -42,5 +42,5 @@ test("Steam API client requests go through the local proxy and normalize respons
   const { SteamApiClient } = await import("../src/lib/steamApi.mjs"); const calls = [];
   const client = new SteamApiClient({ fetcher: async (url) => { calls.push(url); return { ok: true, async json() { return { response: { players: [{ steamid: "123", personaname: "Thiago" }], game_count: 1, games: [{ appid: 10, name: "Portal", playtime_forever: 120 }] } }; } }; } });
   const profile = await client.getProfile("123"); const library = await client.getOwnedGames("123");
-  assert.equal(calls[0], "/api/steam/profile?steamId=123"); assert.equal(calls[1], "/api/steam/owned-games?steamId=123"); assert.equal(profile.personaname, "Thiago"); assert.equal(library.games[0].title, "Portal"); assert.equal(library.games[0].hours, 2);
+  assert.equal(calls[0], "/api/steam/profile?steamId=123"); assert.equal(calls[1], "/api/steam/owned-games?steamId=123"); assert.equal(profile.personaname, "Thiago"); assert.equal(library.games[0].title, "Portal"); assert.equal(library.games[0].hours, 2); assert.match(library.games[0].coverUrl, /steam\/apps\/10\/library_600x900_2x\.jpg/);
 });

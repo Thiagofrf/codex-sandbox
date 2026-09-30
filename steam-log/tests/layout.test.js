@@ -51,3 +51,23 @@ test("the logo context is visually distinct from the clickable section navigatio
   assert.match(css, /\.steam-header-context \{[^}]*border:/);
   assert.match(css, /\.steam-header-context \{[^}]*text-transform: uppercase/);
 });
+
+test("the comfort visual system avoids mono typography and keeps game listings image-led", () => {
+  const monoFont = ["DM", "Mono"].join(" ");
+  assert.doesNotMatch(html, new RegExp(monoFont));
+  assert.doesNotMatch(css, new RegExp(monoFont));
+  assert.match(app, /<img class="game-cover-image"/);
+  assert.match(app, /cover\(item, "activity-cover"\)/);
+  assert.match(app, /cover\(item, "session-cover"\)/);
+  assert.match(css, /body\.steam-shell \.game-cover-image \{[^}]*width: 100%/);
+  assert.match(css, /body\.steam-shell \.table td \{[^}]*font-size: 12px/);
+  assert.match(css, /body\.steam-shell \.wishlist-snapshot-copy span \{[^}]*font-size: 11px/);
+});
+
+test("the home wishlist snapshot has a dedicated card treatment", () => {
+  assert.match(app, /wishlist-snapshot-item/);
+  assert.match(app, /wishlist-snapshot-price/);
+  assert.match(css, /body\.steam-shell \.wish-list, body\.steam-shell \.wishlist-snapshot-list/);
+  assert.match(css, /body\.steam-shell \.wishlist-snapshot-item/);
+  assert.match(css, /body\.steam-shell \.wishlist-snapshot-cover/);
+});

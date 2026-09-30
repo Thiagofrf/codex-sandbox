@@ -3,7 +3,7 @@
   --line: #e5eaf1; --line-strong: #d7dfe9; --navy: #101a2b; --blue: #4f7cff; --blue-soft: #eaf0ff;
   --purple: #9b78ee; --purple-soft: #f1ecff; --orange: #f09161; --orange-soft: #fff0e8; --green: #2eb78b; --green-soft: #e2f8f0;
   --shadow: 0 12px 35px rgba(41,62,93,.07); --shadow-lg: 0 28px 70px rgba(22,36,58,.17); --radius: 16px;
-  --mono: "DM Mono", ui-monospace, monospace; --sans: "Plus Jakarta Sans", Inter, ui-sans-serif, system-ui, sans-serif;
+  --mono: var(--sans); --sans: "Plus Jakarta Sans", Inter, ui-sans-serif, system-ui, sans-serif;
 }
 body[data-theme="dark"] { --bg: #0d1523; --surface: #131e30; --surface-soft: #182538; --ink: #edf2fb; --muted: #95a4bb; --muted-2: #6f8099; --line: #233149; --line-strong: #30405a; --blue-soft: #1c2e58; --purple-soft: #2a204b; --orange-soft: #38251e; --green-soft: #173d35; --shadow: 0 12px 35px rgba(0,0,0,.18); }
 body[data-theme="dark"] .topbar { background: rgba(13,21,35,.85); }
@@ -121,3 +121,40 @@ body.steam-shell[data-theme="light"] .full-table thead { background: #f1f6fa; }
 body.steam-shell[data-theme="light"] .full-table .game-cell strong { color: #1a2a3b; }
 body.steam-shell[data-theme="light"] .full-table .game-cell span { color: #64778b; }
 @media (max-width:760px) { .steam-header-context { display: none; } body.steam-shell .full-table { min-width: 780px; } body.steam-shell .full-table th:first-child, body.steam-shell .full-table td:first-child { padding-left: 20px; } body.steam-shell .full-table th:last-child, body.steam-shell .full-table td:last-child { padding-right: 20px; } body.steam-shell .wish-grid { padding: 18px; } }
+
+/* Comfort pass: friendlier type scale, stronger dark-theme contrast, and image-led listings. */
+body.steam-shell { --ink: #f4f8fc; --muted: #b6c8d9; --muted-2: #8fa9bd; --line: #2d4861; --line-strong: #45647f; }
+body.steam-shell[data-theme="light"] { --ink: #182b3e; --muted: #5e7387; --muted-2: #7890a3; --line: #d0dee8; --line-strong: #b5cbd9; }
+body.steam-shell .game-cover-image { display: block; width: 100%; height: 100%; object-fit: cover; }
+body.steam-shell .game-cover > span { display: block; padding: 5px; }
+body.steam-shell .table th { color: #9ab7cb; font-size: 10px; }
+body.steam-shell .table td { color: #bdd0df; font-size: 12px; }
+body.steam-shell .game-cell strong { color: #f4f8fc; font-family: var(--sans); font-size: 13px; font-weight: 700; letter-spacing: -.02em; }
+body.steam-shell .game-cell span { color: #a9bfd1; font-family: var(--sans); font-size: 11px; }
+body.steam-shell .pill { font-family: var(--sans); font-size: 10px; font-weight: 600; }
+body.steam-shell .card-title { font-size: 15px; }
+body.steam-shell .card-link, body.steam-shell .currency-label, body.steam-shell .table-label { font-family: var(--sans); font-size: 11px; }
+body.steam-shell .eyebrow, body.steam-shell .kicker { font-family: var(--sans); font-size: 11px; font-weight: 700; letter-spacing: .08em; }
+body.steam-shell .page-heading p, body.steam-shell .hero-copy p:not(.kicker) { color: #b6c8d9; font-size: 13px; line-height: 1.65; }
+body.steam-shell .stat-sub { color: #abc0d1; font-family: var(--sans); font-size: 11px; }
+body.steam-shell .wish-list, body.steam-shell .wishlist-snapshot-list { padding: 0 24px 14px; }
+body.steam-shell .wishlist-snapshot-item { display: grid; grid-template-columns: 54px minmax(0,1fr) auto; align-items: center; gap: 14px; padding: 14px 0; border-top: 1px solid #2a435a; }
+body.steam-shell .wishlist-snapshot-item:first-of-type { border-top: 0; }
+body.steam-shell .wishlist-snapshot-cover { width: 54px; height: 68px; border-radius: 10px; box-shadow: 0 8px 18px rgba(0,0,0,.22); }
+body.steam-shell .wishlist-snapshot-copy { min-width: 0; }
+body.steam-shell .wishlist-snapshot-copy strong { display: block; overflow: hidden; color: #f4f8fc; font-family: var(--sans); font-size: 13px; font-weight: 700; letter-spacing: -.02em; line-height: 1.25; text-overflow: ellipsis; white-space: nowrap; }
+body.steam-shell .wishlist-snapshot-copy span { display: block; overflow: hidden; margin-top: 6px; color: #abc0d1; font-family: var(--sans); font-size: 11px; text-overflow: ellipsis; white-space: nowrap; }
+body.steam-shell .wishlist-snapshot-price { color: #d7edff; font-family: var(--sans); font-size: 12px; font-weight: 700; white-space: nowrap; }
+body.steam-shell .activity-item { grid-template-columns: 48px minmax(0,1fr) auto; gap: 14px; padding: 14px 0; }
+body.steam-shell .activity-cover { width: 48px; height: 60px; border-radius: 9px; }
+body.steam-shell .activity-copy strong, body.steam-shell .session-copy strong { font-size: 13px; }
+body.steam-shell .activity-copy span, body.steam-shell .session-copy span { color: #abc0d1; font-family: var(--sans); font-size: 11px; }
+body.steam-shell .activity-time, body.steam-shell .session-hours { color: #9fc6e2; font-family: var(--sans); font-size: 11px; }
+body.steam-shell .session { grid-template-columns: 54px 43px minmax(0,1fr) auto; gap: 14px; padding: 16px 0; }
+body.steam-shell .session-cover { width: 54px; height: 68px; border-radius: 10px; }
+body.steam-shell .session-date { font-family: var(--sans); font-size: 11px; }
+body.steam-shell .session-date strong { font-size: 20px; }
+body.steam-shell[data-theme="light"] .table td, body.steam-shell[data-theme="light"] .wishlist-snapshot-copy span, body.steam-shell[data-theme="light"] .activity-copy span, body.steam-shell[data-theme="light"] .session-copy span { color: #5e7387; }
+body.steam-shell[data-theme="light"] .game-cell strong, body.steam-shell[data-theme="light"] .wishlist-snapshot-copy strong { color: #182b3e; }
+body.steam-shell[data-theme="light"] .wishlist-snapshot-item { border-top-color: #d8e4ec; }
+@media (max-width:760px) { body.steam-shell .wish-list, body.steam-shell .wishlist-snapshot-list { padding: 0 18px 10px; } body.steam-shell .wishlist-snapshot-item { grid-template-columns: 48px minmax(0,1fr); } body.steam-shell .wishlist-snapshot-cover { width: 48px; height: 60px; } body.steam-shell .wishlist-snapshot-price { grid-column: 2; } body.steam-shell .session { grid-template-columns: 48px 38px minmax(0,1fr); } body.steam-shell .session-hours { grid-column: 3; } }
