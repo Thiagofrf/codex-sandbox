@@ -26,7 +26,9 @@ test("React integration has a provider, hook, app entry, and Steam sync panel", 
   const panel = read("src", "components", "SteamSyncPanel.jsx");
   assert.match(main, /createRoot/); assert.match(main, /<App \/>/); assert.match(main, /SteamProvider/);
   assert.match(context, /export function SteamProvider/); assert.match(context, /export function useSteam/); assert.match(context, /SteamApiClient/);
-  assert.match(app, /SteamSyncPanel/); assert.match(panel, /useSteam/); assert.match(panel, /Connect Steam|Sync Steam/);
+  assert.match(app, /SteamSyncPanel/); assert.match(panel, /useSteam/); assert.match(panel, /SteamConnectionForm/); assert.match(panel, /SteamConnectedStatus/);
+  assert.match(read("src", "components", "steam", "SteamConnectionForm.jsx"), /Connect Steam/);
+  assert.match(read("src", "components", "steam", "SteamConnectedStatus.jsx"), /Disconnect/);
 });
 
 test("Steam API client never exposes the Steam Web API key to the browser", () => {

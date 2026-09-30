@@ -1,8 +1,8 @@
 # Steam Log validation map
 
-Validation run: `node --test tests/app.test.js tests/layout.test.js`
+Validation run: `npm test`
 
-Result: **18 passed, 0 failed**
+Result: **33 passed, 0 failed**
 
 | Area | Behavior validated | Test coverage | Result |
 | --- | --- | --- | --- |
@@ -26,9 +26,12 @@ Result: **18 passed, 0 failed**
 | Layout navigation | All five primary views are exposed in the horizontal header navigation | `horizontal library navigation...` | PASS |
 | Layout styling | Steam tokens, shell rules, shelf rules, and responsive rules are present | `Steam visual tokens...` | PASS |
 | Layout hierarchy | Desktop hides the admin-style sidebar in favor of a full-width top navigation; sidebar remains available as a mobile drawer | `Steam visual tokens...` | PASS |
+| React composition | Sync panel delegates connected and disconnected states to focused Steam components | `Steam connection components...`, `React integration...` | PASS |
+| React connection flow | Steam connect, proxy error, and disconnect states update rendered content and API calls | `SteamSyncPanel.test.jsx` | PASS |
+| Game-data utilities | Hours formatting, library stats, filtering, wishlist totals, and genre-affinity ranking are deterministic | `gameData.test.mjs` | PASS |
 
 ## Validation notes
 
 - The suite runs the real `steam-log/app.js`, not a duplicate implementation.
 - `tests/harness.js` only supplies browser primitives absent from Node: DOM lookup, delegated events, localStorage, FormData, modal/toast nodes, and `window.location`.
-- The final run also includes `node --check app.js` and `git diff --check`.
+- The final run also includes the Vite production build, `node --check server/steamProxy.mjs`, and `git diff --check`.
