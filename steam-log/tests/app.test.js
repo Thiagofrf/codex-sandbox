@@ -31,6 +31,7 @@ test("the dashboard fills sparse cards with useful backlog and genre summaries",
   assert.match(markup, /backlog-insights/);
   assert.match(markup, /backlog-spotlight/);
   assert.match(markup, /genre-summary/);
+  assert.match(markup, /wishlist-snapshot-summary/);
   assert.match(markup, /Current signal/);
 });
 

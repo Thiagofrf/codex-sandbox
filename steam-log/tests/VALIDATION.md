@@ -43,10 +43,10 @@ Result: **50 passed, 0 failed**
 | Light-theme contrast | Steam header navigation, wishlist cards, and genre rows retain readable contrast in light mode | `light theme keeps the Steam header, wishlist cards, and genre rows readable` | PASS |
 | Wishlist card composition | Wishlist ranking and value insights render within one consolidated card container | `initial load renders...`, `wishlist insights are consolidated...` | PASS |
 | Primary navigation priority | Wishlist is the second primary tab, while Activity is no longer exposed as a primary tab | `the primary header prioritizes Wishlist...`, `the horizontal library navigation...` | PASS |
-| Home card alignment | Backlog and Genre pulse avoid forced empty height and use balanced, content-sized dashboard columns | `the home browsing columns stay visually aligned`, `sparse home cards expose...` | PASS |
+| Home card alignment | Backlog/Wishlist and insight/Genre panels share explicit dashboard grid rows for horizontal and vertical alignment | `the home browsing columns stay visually aligned`, `sparse home cards expose...` | PASS |
 | Wishlist ranking signal | Every wishlist card exposes a deterministic percentage match and no longer renders empty genre-prompt copy | `wishlist cards render a ranked match signal...` | PASS |
 | Wishlist card hierarchy | Wishlist cards stack genre and price, then place rank and percentage in a highlighted bottom badge | `wishlist cards stack genre and price...`, `wishlist card metadata reads...` | PASS |
-| Sparse dashboard content | Backlog and Genre pulse use supplemental next-up and current-signal panels when their lists are short | `the dashboard fills sparse cards...` | PASS |
+| Sparse dashboard content | Backlog, Wishlist, and Genre pulse use supplemental next-up, wishlist-pulse, and current-signal panels when their lists are short | `the dashboard fills sparse cards...` | PASS |
 
 ## Validation notes
 

@@ -364,3 +364,29 @@ body.steam-shell .dashboard-activity-weekdays { grid-column: 1; grid-row: 2; }
 body.steam-shell .dashboard-activity-graph .heatmap { grid-column: 2; grid-row: 2; }
 body.steam-shell[data-theme="light"] .dashboard-activity-months { color: #587286; }
 @media (max-width:760px) { body.steam-shell .backlog-insights { grid-template-columns: minmax(0,1fr) minmax(80px,.5fr) minmax(80px,.5fr); } body.steam-shell .backlog-insights .btn { grid-column: 1 / -1; } body.steam-shell .genre-summary { grid-template-columns: minmax(0,1fr) auto; } body.steam-shell .genre-summary .btn { grid-column: 1 / -1; } body.steam-shell .dashboard-activity-graph { min-width: 650px; } }
+
+body.steam-shell .dashboard-grid { align-items: stretch; grid-template-rows: auto auto; }
+body.steam-shell .dashboard-left, body.steam-shell .dashboard-right { display: contents; }
+body.steam-shell .backlog-card { grid-column: 1; grid-row: 1; }
+body.steam-shell .wishlist-card { grid-column: 2; grid-row: 1; }
+body.steam-shell .backlog-insights { grid-column: 1; grid-row: 2; }
+body.steam-shell .genre-card { grid-column: 2; grid-row: 2; }
+body.steam-shell .dashboard-grid .backlog-card { grid-column: 1; grid-row: 1; min-width: 0; height: auto; }
+body.steam-shell .dashboard-grid .wishlist-card { grid-column: 2; grid-row: 1; min-width: 0; display: flex; flex-direction: column; }
+body.steam-shell .dashboard-grid .backlog-insights { grid-column: 1; grid-row: 2; min-width: 0; margin: 0; height: 100%; align-content: center; }
+body.steam-shell .dashboard-grid .genre-card { grid-column: 2; grid-row: 2; min-width: 0; min-height: 0; }
+body.steam-shell .wishlist-snapshot-summary { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 12px; align-items: center; margin: auto 24px 24px; padding: 14px; border: 1px solid #2a4963; border-radius: 11px; background: rgba(20,48,71,.6); }
+body.steam-shell .wishlist-snapshot-summary > div { min-width: 0; padding-left: 12px; border-left: 1px solid #31516b; }
+body.steam-shell .wishlist-snapshot-summary > div:first-child { padding-left: 0; border-left: 0; }
+body.steam-shell .wishlist-snapshot-summary span { display: block; overflow: hidden; color: #8fa8bb; font-size: 9px; text-overflow: ellipsis; white-space: nowrap; }
+body.steam-shell .wishlist-snapshot-summary .eyebrow { margin: 0 0 4px; color: #70caff; }
+body.steam-shell .wishlist-snapshot-summary strong { display: block; overflow: hidden; margin-top: 4px; color: #bfeaff; font-size: 13px; text-overflow: ellipsis; white-space: nowrap; }
+body.steam-shell .wishlist-snapshot-summary-top strong { color: #cbb8ff; }
+body.steam-shell[data-theme="light"] .wishlist-snapshot-summary { border-color: #bfd7e6; background: #eef8ff; }
+body.steam-shell[data-theme="light"] .wishlist-snapshot-summary > div { border-color: #c7dce9; }
+body.steam-shell[data-theme="light"] .wishlist-snapshot-summary span { color: #587286; }
+body.steam-shell[data-theme="light"] .wishlist-snapshot-summary .eyebrow { color: #176da5; }
+body.steam-shell[data-theme="light"] .wishlist-snapshot-summary strong { color: #176da5; }
+body.steam-shell[data-theme="light"] .wishlist-snapshot-summary-top strong { color: #6844c5; }
+@media (max-width:1050px) { body.steam-shell .dashboard-grid { grid-template-columns: 1fr; } body.steam-shell .dashboard-grid .backlog-card, body.steam-shell .dashboard-grid .wishlist-card, body.steam-shell .dashboard-grid .backlog-insights, body.steam-shell .dashboard-grid .genre-card { grid-column: 1; grid-row: auto; } }
+@media (max-width:760px) { body.steam-shell .wishlist-snapshot-summary { grid-template-columns: repeat(2, minmax(0,1fr)); margin: 18px; } body.steam-shell .wishlist-snapshot-summary > div:nth-child(3) { padding-left: 0; border-left: 0; } }

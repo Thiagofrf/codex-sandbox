@@ -95,17 +95,21 @@ test("the dashboard promotes activity history and rhythm as a first-class highli
 });
 
 test("the home browsing columns stay visually aligned", () => {
-  assert.match(css, /body\.steam-shell \.dashboard-grid \{[^}]*align-items: start/);
-  assert.match(css, /body\.steam-shell \.dashboard-left \{[^}]*grid-template-rows: auto/);
-  assert.match(css, /body\.steam-shell \.dashboard-left \.backlog-card \{[^}]*height: auto/);
-  assert.match(css, /body\.steam-shell \.dashboard-right \{[^}]*grid-template-rows: auto auto/);
+  assert.match(css, /body\.steam-shell \.dashboard-grid \{[^}]*align-items: stretch/);
+  assert.match(css, /body\.steam-shell \.dashboard-left, body\.steam-shell \.dashboard-right \{[^}]*display: contents/);
+  assert.match(css, /body\.steam-shell \.backlog-card \{[^}]*grid-column: 1[^}]*grid-row: 1/);
+  assert.match(css, /body\.steam-shell \.wishlist-card \{[^}]*grid-column: 2[^}]*grid-row: 1/);
+  assert.match(css, /body\.steam-shell \.backlog-insights \{[^}]*grid-column: 1[^}]*grid-row: 2/);
+  assert.match(css, /body\.steam-shell \.genre-card \{[^}]*grid-column: 2[^}]*grid-row: 2/);
 });
 
 test("sparse home cards expose useful supplemental content instead of forced empty height", () => {
   assert.match(app, /backlog-insights/);
   assert.match(app, /genre-summary/);
+  assert.match(app, /wishlist-snapshot-summary/);
   assert.match(css, /body\.steam-shell \.backlog-insights/);
   assert.match(css, /body\.steam-shell \.genre-summary/);
+  assert.match(css, /body\.steam-shell \.wishlist-snapshot-summary/);
 });
 
 test("activity graph uses an accessible styled tooltip and weekday guide", () => {
