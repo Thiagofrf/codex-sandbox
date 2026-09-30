@@ -81,6 +81,8 @@ test("the dashboard promotes activity history and rhythm as a first-class highli
   assert.match(css, /dashboard-activity-highlight \{[^}]*grid-template-columns: minmax\(250px,\.78fr\) minmax\(0,2\.22fr\)/);
   assert.match(css, /body\.steam-shell \.dashboard-activity-history \{ display: none; \}/);
   assert.match(css, /body\.steam-shell \.dashboard-grid \.activity-card \{ display: none; \}/);
+  assert.match(app, /Array\.from\(\{ length: 364 \}/);
+  assert.match(css, /dashboard-activity-heatmap \.heatmap \{ grid-template-columns: repeat\(52,/);
 });
 
 test("library browsing uses spacious rows and visible sorting controls", () => {
