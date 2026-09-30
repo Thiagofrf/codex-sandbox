@@ -88,14 +88,24 @@ test("the dashboard promotes activity history and rhythm as a first-class highli
   assert.match(app, /data-date="/);
   assert.match(app, /Less/);
   assert.match(app, /More/);
+  assert.match(app, /dashboard-activity-months/);
+  assert.doesNotMatch(app, /<div class="heatmap-labels"><span>Jan<\/span><span>Dec<\/span><\/div>/);
   assert.match(css, /dashboard-activity-legend/);
+  assert.match(css, /body\.steam-shell \.dashboard-activity-months/);
 });
 
 test("the home browsing columns stay visually aligned", () => {
-  assert.match(css, /body\.steam-shell \.dashboard-grid \{[^}]*align-items: stretch/);
-  assert.match(css, /body\.steam-shell \.dashboard-left \{[^}]*grid-template-rows: minmax\(0,1fr\)/);
-  assert.match(css, /body\.steam-shell \.dashboard-left \.backlog-card \{[^}]*height: 100%/);
-  assert.match(css, /body\.steam-shell \.dashboard-right \{[^}]*grid-template-rows: minmax\(0,1fr\) minmax\(0,1fr\)/);
+  assert.match(css, /body\.steam-shell \.dashboard-grid \{[^}]*align-items: start/);
+  assert.match(css, /body\.steam-shell \.dashboard-left \{[^}]*grid-template-rows: auto/);
+  assert.match(css, /body\.steam-shell \.dashboard-left \.backlog-card \{[^}]*height: auto/);
+  assert.match(css, /body\.steam-shell \.dashboard-right \{[^}]*grid-template-rows: auto auto/);
+});
+
+test("sparse home cards expose useful supplemental content instead of forced empty height", () => {
+  assert.match(app, /backlog-insights/);
+  assert.match(app, /genre-summary/);
+  assert.match(css, /body\.steam-shell \.backlog-insights/);
+  assert.match(css, /body\.steam-shell \.genre-summary/);
 });
 
 test("activity graph uses an accessible styled tooltip and weekday guide", () => {

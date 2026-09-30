@@ -2,7 +2,7 @@
 
 Validation run: `npm test`
 
-Result: **48 passed, 0 failed**
+Result: **50 passed, 0 failed**
 
 | Area | Behavior validated | Test coverage | Result |
 | --- | --- | --- | --- |
@@ -35,7 +35,7 @@ Result: **48 passed, 0 failed**
 | Image-led listings | Library, wishlist, home activity, and session listings render cover-image slots backed by Steam artwork | `the comfort visual system avoids mono typography...` | PASS |
 | Wishlist snapshot | Home snapshot rows use dedicated spacing, cover, title, metadata, and price treatments | `the home wishlist snapshot has a dedicated card treatment` | PASS |
 | Dashboard activity highlight | Home leads with a wide 52-week GitHub-style rhythm graph, with the AI playlist and duplicate session panels removed | `the dashboard promotes activity history...`, `initial load renders...` | PASS |
-| Activity graph detail | Daily squares expose hours and dates through a styled pointer/focus tooltip, include weekday labels, and include a Less→More color legend | `activity graph uses an accessible styled tooltip...`, `the dashboard promotes activity history...` | PASS |
+| Activity graph detail | Daily squares expose hours and dates through a styled pointer/focus tooltip, include weekday labels, month labels above the grid, and include a Less→More color legend | `activity graph uses an accessible styled tooltip...`, `the dashboard promotes activity history...` | PASS |
 | Home session history | Session history is available on Home after Activity leaves the primary navigation | `initial load renders...`, `the primary header prioritizes Wishlist...` | PASS |
 | Spacious library browsing | Home and library listings use larger cover art, taller rows, wider game cells, and visible sort controls | `library browsing uses spacious rows and visible sorting controls` | PASS |
 | Consolidated wishlist insights | Wishlist price, genre, and price-band information is embedded into the primary wishlist card | `wishlist insights are consolidated and visually emphasized` | PASS |
@@ -43,9 +43,10 @@ Result: **48 passed, 0 failed**
 | Light-theme contrast | Steam header navigation, wishlist cards, and genre rows retain readable contrast in light mode | `light theme keeps the Steam header, wishlist cards, and genre rows readable` | PASS |
 | Wishlist card composition | Wishlist ranking and value insights render within one consolidated card container | `initial load renders...`, `wishlist insights are consolidated...` | PASS |
 | Primary navigation priority | Wishlist is the second primary tab, while Activity is no longer exposed as a primary tab | `the primary header prioritizes Wishlist...`, `the horizontal library navigation...` | PASS |
-| Home card alignment | Backlog and Genre pulse use stretched, balanced dashboard columns | `the home browsing columns stay visually aligned` | PASS |
+| Home card alignment | Backlog and Genre pulse avoid forced empty height and use balanced, content-sized dashboard columns | `the home browsing columns stay visually aligned`, `sparse home cards expose...` | PASS |
 | Wishlist ranking signal | Every wishlist card exposes a deterministic percentage match and no longer renders empty genre-prompt copy | `wishlist cards render a ranked match signal...` | PASS |
 | Wishlist card hierarchy | Wishlist cards stack genre and price, then place rank and percentage in a highlighted bottom badge | `wishlist cards stack genre and price...`, `wishlist card metadata reads...` | PASS |
+| Sparse dashboard content | Backlog and Genre pulse use supplemental next-up and current-signal panels when their lists are short | `the dashboard fills sparse cards...` | PASS |
 
 ## Validation notes
 

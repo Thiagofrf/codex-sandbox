@@ -26,6 +26,14 @@ test("the primary header prioritizes Wishlist and keeps session history on Home"
   assert.match(dashboard(app), /dashboard-session-history/);
 });
 
+test("the dashboard fills sparse cards with useful backlog and genre summaries", () => {
+  const markup = dashboard(createApp());
+  assert.match(markup, /backlog-insights/);
+  assert.match(markup, /backlog-spotlight/);
+  assert.match(markup, /genre-summary/);
+  assert.match(markup, /Current signal/);
+});
+
 test("every sidebar menu link changes the active view, title, hash, and panel", () => {
   const app = createApp(); const expected = { dashboard: "Overview", wishlist: "Wishlist", backlog: "Backlog", genres: "Genre pulse" };
   for (const [view, title] of Object.entries(expected)) { click(app, app.document.navItems.find((item) => item.dataset.view === view)); assert.equal(app.api.getActiveView(), view); assert.equal(app.window.location.hash, view); assert.equal(app.document.querySelector("#page-title").textContent, title); assert.ok(app.document.querySelector(`#view-${view}`).classList.contains("active")); }

@@ -330,3 +330,37 @@ body.steam-shell[data-theme="light"] .wish-match { border-color: #9bbce7; backgr
 body.steam-shell[data-theme="light"] .wish-match .wish-rank { color: #176da5; }
 body.steam-shell[data-theme="light"] .wish-match strong { color: #253d70; }
 body.steam-shell[data-theme="light"] .wish-match > span:last-child { color: #566c9b; }
+
+body.steam-shell .dashboard-grid { align-items: start; }
+body.steam-shell .dashboard-left { grid-template-rows: auto; }
+body.steam-shell .dashboard-left .backlog-card { height: auto; }
+body.steam-shell .dashboard-right { grid-template-rows: auto auto; align-content: start; }
+body.steam-shell .backlog-insights { display: grid; grid-template-columns: minmax(0,1.7fr) minmax(90px,.55fr) minmax(90px,.55fr) auto; gap: 12px; align-items: center; margin: 17px 21px 21px; padding: 14px; border: 1px solid #2a4963; border-radius: 11px; background: linear-gradient(135deg, rgba(30,67,98,.58), rgba(16,35,53,.7)); }
+body.steam-shell .backlog-spotlight, body.steam-shell .backlog-insight-metric { min-width: 0; }
+body.steam-shell .backlog-spotlight .eyebrow { margin: 0 0 5px; color: #70caff; }
+body.steam-shell .backlog-spotlight strong { display: block; overflow: hidden; color: #f1f8ff; font-size: 14px; text-overflow: ellipsis; white-space: nowrap; }
+body.steam-shell .backlog-spotlight > span:last-child { display: block; margin-top: 4px; overflow: hidden; color: #9bb8cd; font-size: 10px; text-overflow: ellipsis; white-space: nowrap; }
+body.steam-shell .backlog-insight-metric { padding-left: 12px; border-left: 1px solid #31516b; }
+body.steam-shell .backlog-insight-metric strong { display: block; color: #bfeaff; font-size: 20px; letter-spacing: -.05em; }
+body.steam-shell .backlog-insight-metric span { display: block; margin-top: 3px; color: #8fa8bb; font-size: 9px; line-height: 1.25; }
+body.steam-shell .backlog-insights .btn, body.steam-shell .genre-summary .btn { white-space: nowrap; }
+body.steam-shell .genre-summary { display: grid; grid-template-columns: minmax(0,1fr) auto auto; gap: 14px; align-items: center; margin: 18px 21px 21px; padding: 14px; border: 1px solid #2a4963; border-radius: 11px; background: rgba(20,48,71,.6); }
+body.steam-shell .genre-summary-copy .eyebrow { margin: 0 0 5px; color: #70caff; }
+body.steam-shell .genre-summary-copy strong { display: block; color: #f1f8ff; font-size: 16px; }
+body.steam-shell .genre-summary-copy > span:last-child { display: block; margin-top: 3px; color: #9bb8cd; font-size: 10px; }
+body.steam-shell .genre-summary-stat { padding-left: 14px; border-left: 1px solid #31516b; }
+body.steam-shell .genre-summary-stat strong { display: block; color: #bfeaff; font-size: 20px; letter-spacing: -.05em; }
+body.steam-shell .genre-summary-stat span { display: block; margin-top: 3px; color: #8fa8bb; font-size: 9px; }
+body.steam-shell[data-theme="light"] .backlog-insights, body.steam-shell[data-theme="light"] .genre-summary { border-color: #bfd7e6; background: linear-gradient(135deg, #eef8ff, #f8fbff); }
+body.steam-shell[data-theme="light"] .backlog-spotlight strong, body.steam-shell[data-theme="light"] .genre-summary-copy strong { color: #16334a; }
+body.steam-shell[data-theme="light"] .backlog-spotlight > span:last-child, body.steam-shell[data-theme="light"] .genre-summary-copy > span:last-child { color: #587286; }
+body.steam-shell[data-theme="light"] .backlog-insight-metric, body.steam-shell[data-theme="light"] .genre-summary-stat { border-color: #c7dce9; }
+body.steam-shell[data-theme="light"] .backlog-insight-metric strong, body.steam-shell[data-theme="light"] .genre-summary-stat strong { color: #176da5; }
+body.steam-shell[data-theme="light"] .backlog-insight-metric span, body.steam-shell[data-theme="light"] .genre-summary-stat span { color: #587286; }
+
+body.steam-shell .dashboard-activity-graph { grid-template-rows: auto minmax(0,1fr); }
+body.steam-shell .dashboard-activity-months { display: grid; grid-column: 2; grid-row: 1; grid-template-columns: repeat(12, minmax(0,1fr)); align-items: end; margin-bottom: 7px; color: #8fa8bb; font-family: var(--sans); font-size: 10px; }
+body.steam-shell .dashboard-activity-weekdays { grid-column: 1; grid-row: 2; }
+body.steam-shell .dashboard-activity-graph .heatmap { grid-column: 2; grid-row: 2; }
+body.steam-shell[data-theme="light"] .dashboard-activity-months { color: #587286; }
+@media (max-width:760px) { body.steam-shell .backlog-insights { grid-template-columns: minmax(0,1fr) minmax(80px,.5fr) minmax(80px,.5fr); } body.steam-shell .backlog-insights .btn { grid-column: 1 / -1; } body.steam-shell .genre-summary { grid-template-columns: minmax(0,1fr) auto; } body.steam-shell .genre-summary .btn { grid-column: 1 / -1; } body.steam-shell .dashboard-activity-graph { min-width: 650px; } }
