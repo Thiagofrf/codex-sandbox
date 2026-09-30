@@ -78,6 +78,9 @@ test("the dashboard promotes activity history and rhythm as a first-class highli
   assert.match(app, /data-view-target="played"[^>]*>View activity/);
   assert.match(css, /body\.steam-shell \.dashboard-activity-highlight/);
   assert.match(css, /body\.steam-shell \.dashboard-activity-heatmap/);
+  assert.match(css, /dashboard-activity-highlight \{[^}]*grid-template-columns: minmax\(250px,\.78fr\) minmax\(0,2\.22fr\)/);
+  assert.match(css, /body\.steam-shell \.dashboard-activity-history \{ display: none; \}/);
+  assert.match(css, /body\.steam-shell \.dashboard-grid \.activity-card \{ display: none; \}/);
 });
 
 test("library browsing uses spacious rows and visible sorting controls", () => {
@@ -90,8 +93,18 @@ test("library browsing uses spacious rows and visible sorting controls", () => {
 
 test("wishlist insights are consolidated and visually emphasized", () => {
   assert.match(app, /wishlist-insights/);
+  assert.match(app, /const mainEnd = sideStart - 6/);
   assert.match(css, /body\.steam-shell \.wishlist-insights/);
   assert.match(css, /body\.steam-shell \.wishlist-insights-price/);
   assert.match(css, /body\.steam-shell \.wishlist-insights-genre/);
-  assert.match(css, /body\.steam-shell \.wishlist-side \{ display: none; \}/);
+  assert.match(css, /body\.steam-shell \.wishlist-main > \.wishlist-insights/);
+});
+
+test("light theme keeps the Steam header, wishlist cards, and genre rows readable", () => {
+  assert.match(css, /body\.steam-shell\[data-theme="light"\] \.steam-header-brand/);
+  assert.match(css, /body\.steam-shell\[data-theme="light"\] \.steam-nav-link\.active/);
+  assert.match(css, /body\.steam-shell\[data-theme="light"\] \.wish-grid-item/);
+  assert.match(css, /body\.steam-shell\[data-theme="light"\] \.wish-grid-item strong/);
+  assert.match(css, /body\.steam-shell\[data-theme="light"\] \.genre-large \.genre-name/);
+  assert.match(css, /body\.steam-shell\[data-theme="light"\] \.genre-large \.genre-count/);
 });

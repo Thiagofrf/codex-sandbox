@@ -221,3 +221,33 @@ body.steam-shell[data-theme="light"] .wishlist-insights { border-color: #c9c3f0;
 body.steam-shell[data-theme="light"] .wishlist-insights-price strong, body.steam-shell[data-theme="light"] .wishlist-insights-genre strong { color: #263452; }
 body.steam-shell[data-theme="light"] .wishlist-insights-price > span:not(.eyebrow), body.steam-shell[data-theme="light"] .wishlist-insights-breakdown span, body.steam-shell[data-theme="light"] .wishlist-insights-genre p { color: #5d6c85; }
 @media (max-width:760px) { body.steam-shell .wishlist-insights { grid-template-columns: 1fr; } body.steam-shell .wishlist-insights-genre { padding: 18px 7px 4px; border-top: 1px solid rgba(202,201,255,.18); border-left: 0; } body.steam-shell .backlog-card .game-cover { width: 48px; height: 62px; } }
+
+/* Activity-first dashboard and high-contrast light browsing. */
+body.steam-shell .dashboard-activity-highlight { grid-template-columns: minmax(250px,.78fr) minmax(0,2.22fr); min-height: 300px; }
+body.steam-shell .dashboard-activity-history { display: none; }
+body.steam-shell .dashboard-activity-heatmap { min-height: 250px; padding: 24px; }
+body.steam-shell .dashboard-activity-heatmap .heatmap { grid-template-columns: repeat(7, minmax(28px,1fr)); gap: 8px; }
+body.steam-shell .dashboard-activity-heatmap .heatmap span { min-height: 34px; border-radius: 6px; }
+body.steam-shell .dashboard-grid .activity-card { display: none; }
+body.steam-shell .wishlist-main { overflow: hidden; }
+body.steam-shell .wishlist-main > .wishlist-insights { margin: 0; border-width: 1px 0 0; border-radius: 0; box-shadow: none; }
+body.steam-shell[data-theme="light"] .steam-header-brand { color: #13283c; }
+body.steam-shell[data-theme="light"] .steam-header-brand .steam-header-tag { color: #4b6680; }
+body.steam-shell[data-theme="light"] .steam-nav-link { color: #46627b; }
+body.steam-shell[data-theme="light"] .steam-nav-link:hover { color: #123b5d; background: rgba(26,159,255,.08); }
+body.steam-shell[data-theme="light"] .steam-nav-link.active { color: #073b62; border-bottom-color: #0b8bd8; }
+body.steam-shell[data-theme="light"] .wish-grid-item { background: #f7fbff; border-color: #b8cede; }
+body.steam-shell[data-theme="light"] .wish-grid-item strong { color: #16334a; }
+body.steam-shell[data-theme="light"] .wish-grid-item .wish-meta { color: #476680; }
+body.steam-shell[data-theme="light"] .wish-grid-item .wish-reason { color: #6844c5; }
+body.steam-shell[data-theme="light"] .wishlist-insights { border-color: #aebfe0; background: linear-gradient(135deg, #e7edff, #eaf8ff); }
+body.steam-shell[data-theme="light"] .wishlist-insights .eyebrow { color: #4f3ca4; }
+body.steam-shell[data-theme="light"] .wishlist-insights-price strong, body.steam-shell[data-theme="light"] .wishlist-insights-genre strong { color: #102d48; }
+body.steam-shell[data-theme="light"] .wishlist-insights-price > span:not(.eyebrow), body.steam-shell[data-theme="light"] .wishlist-insights-breakdown span, body.steam-shell[data-theme="light"] .wishlist-insights-genre p { color: #365570; }
+body.steam-shell[data-theme="light"] .wishlist-insights-breakdown span { border-color: #9eb7d1; background: rgba(255,255,255,.55); }
+body.steam-shell[data-theme="light"] .wishlist-insights-breakdown b { color: #123b5d; }
+body.steam-shell[data-theme="light"] .genre-large .genre-name { color: #1b405d; font-weight: 700; }
+body.steam-shell[data-theme="light"] .genre-large .genre-count { color: #315671; font-weight: 700; }
+body.steam-shell[data-theme="light"] .genre-large .genre-bar { background: #d2e0ec; }
+@media (max-width:1100px) { body.steam-shell .dashboard-activity-highlight { grid-template-columns: minmax(220px,.75fr) minmax(0,1.25fr); } }
+@media (max-width:760px) { body.steam-shell .dashboard-activity-highlight { grid-template-columns: 1fr; min-height: 0; } body.steam-shell .dashboard-activity-heatmap { min-height: 0; padding: 18px; } body.steam-shell .dashboard-activity-heatmap .heatmap { grid-template-columns: repeat(7, minmax(18px,1fr)); gap: 6px; } body.steam-shell .dashboard-activity-heatmap .heatmap span { min-height: 26px; } }
