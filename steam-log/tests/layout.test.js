@@ -30,5 +30,7 @@ test("Steam visual tokens and responsive layout rules exist", () => {
   assert.match(css, /\.steam-shell/);
   assert.match(css, /\.steam-header-nav/);
   assert.match(css, /\.shelf-grid/);
+  assert.match(css, /body\.steam-shell \.sidebar \{ display: none; \}/);
+  assert.match(css, /body\.steam-shell \.main-content \{ width: 100%; \}/);
   assert.match(css, /@media \(max-width:760px\)/);
 });
