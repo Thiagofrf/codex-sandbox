@@ -2,7 +2,7 @@
 
 Validation run: `npm test`
 
-Result: **33 passed, 0 failed**
+Result: **35 passed, 0 failed**
 
 | Area | Behavior validated | Test coverage | Result |
 | --- | --- | --- | --- |
@@ -29,6 +29,8 @@ Result: **33 passed, 0 failed**
 | React composition | Sync panel delegates connected and disconnected states to focused Steam components | `Steam connection components...`, `React integration...` | PASS |
 | React connection flow | Steam connect, proxy error, and disconnect states update rendered content and API calls | `SteamSyncPanel.test.jsx` | PASS |
 | Game-data utilities | Hours formatting, library stats, filtering, wishlist totals, and genre-affinity ranking are deterministic | `gameData.test.mjs` | PASS |
+| Library visual refresh | Table gutters, header treatment, readable sans-serif metadata, and larger cover-first cards are declared | `the library table keeps readable alignment...` | PASS |
+| Header clarity | The game-space context is distinct from clickable section navigation | `the logo context is visually distinct...` | PASS |
 
 ## Validation notes
 
