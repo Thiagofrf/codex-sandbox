@@ -7,7 +7,7 @@ This repository contains small, focused web projects developed and iterated loca
 | Project | Stack | Purpose | Current state |
 | --- | --- | --- | --- |
 | [personal-os/](./personal-os/) | HTML, CSS, vanilla JavaScript, localStorage | A personal operating system for routine, weekly planning, studies, side projects, hobbies, cycles, metrics, outputs, and review. | Active MVP; opens directly from personal-os/index.html. |
-| [portfolio/](./portfolio/) | HTML, CSS, vanilla JavaScript, Google Fonts | A personal portfolio landing page focused on engineering experience, selected work, product thinking, and contact. | Static landing page; opens directly from portfolio/index.html. |
+| [portfolio/](./portfolio/) | HTML, CSS, vanilla JavaScript, Google Fonts | A personal portfolio landing page focused on engineering experience, selected work, product thinking, and contact. Includes Personal OS and Steam Log cards with build-method flags. | Static landing page; opens directly from portfolio/index.html. |
 | [steam-log/](./steam-log/) | HTML, CSS, vanilla JavaScript, localStorage | A Steam backlog and wishlist companion with play history and transparent AI-style ranking. | Functional local MVP; opens directly from steam-log/index.html. |
 
 ## Collaboration with Codex
